@@ -10,5 +10,5 @@ public class Usuario {
 	String apellido;
 	String mail;
 	Date fecha;
-	
+
 }
