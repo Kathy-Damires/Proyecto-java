@@ -1,5 +1,8 @@
 package Logica;
 
-public class Inasistencia {
+import java.sql.Date;
 
+public class Inasistencia {
+ Date fecha;
+ int cantidadHoras;
 }

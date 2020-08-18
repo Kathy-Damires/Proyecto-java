@@ -1,5 +1,8 @@
 package Logica;
 
-public class Examen {
+import java.sql.Date;
 
+public class Examen {
+ Date fecha;
+ int nota;
 }
