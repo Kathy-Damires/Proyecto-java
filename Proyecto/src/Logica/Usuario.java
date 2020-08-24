@@ -11,6 +11,15 @@ public class Usuario {
 	private String mail;
 	private Date fecha;
 	
+	public Usuario(String ci, String contraseña, String nombre, String apellido,String mail, Date fcha)// constructor
+	{
+		this.ci = ci;
+		this.contraseña =contraseña ;
+		this.nombre = nombre;
+		this.apellido =apellido ;
+		this.mail = mail;
+		this.fecha = fecha;
+	}
 	
 	public String getCi() {
 		return ci;
