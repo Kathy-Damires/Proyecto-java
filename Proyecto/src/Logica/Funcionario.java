@@ -1,5 +1,5 @@
 package Logica;
 
-public class Funcionario {
+public class Funcionario extends Usuario{
 
 }

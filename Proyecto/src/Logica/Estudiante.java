@@ -1,6 +1,6 @@
 package Logica;
 
-public class Estudiante {
+public class Estudiante extends Usuario{
 	
 	
 	
