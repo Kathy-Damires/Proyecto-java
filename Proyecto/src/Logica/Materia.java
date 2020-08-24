@@ -1,6 +1,6 @@
 package Logica;
 
 public class Materia {
- String codigo ;
- String nombre ;
+ private String codigo ;
+ private String nombre ;
 }
