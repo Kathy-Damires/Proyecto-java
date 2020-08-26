@@ -1,12 +1,12 @@
 package Logica;
 
-import java.util.Scanner;
-
 public class Cursada {
-	Scanner leer = new Scanner(System.in);
-	
 	private int nota;
 	
+	public Cursada(int nota)// constructor
+	{
+		this.nota = nota;
+	}
 	
 	public int getNota() {
 		return nota;

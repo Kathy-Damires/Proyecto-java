@@ -6,6 +6,11 @@ public class Examen {
 	private Date fecha;
 	private int nota;
 	
+	public Examen(int nota, Date fecha)// constructor
+	{
+		this.nota = nota;
+		this.fecha = fecha;
+	}
 	public Date getFecha() {
 		return fecha;
 	}
