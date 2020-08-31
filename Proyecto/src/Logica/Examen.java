@@ -1,6 +1,7 @@
 package Logica;
 
 import java.sql.Date;
+import java.util.HashSet;
 
 public class Examen {
 	private Date fecha;
@@ -11,12 +12,18 @@ public class Examen {
 		this.nota = nota;
 		this.fecha = fecha;
 	}
+	
+	//relaciones
+	HashSet<Estudiante>estudiante = new HashSet<Estudiante>();
+	HashSet<Materia>materia = new HashSet<Materia>();
+	
 	public Date getFecha() {
 		return fecha;
 	}
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	
 	public int getNota() {
 		return nota;
 	}
