@@ -1,8 +1,6 @@
 package Logica;
 
 import java.sql.Date;
-import java.time.LocalDate;
-
 
 public class Usuario {
 
@@ -57,14 +55,12 @@ public class Usuario {
 		return mail;
 	}
 	
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-
-
 	
 }
 
