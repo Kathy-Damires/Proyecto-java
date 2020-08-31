@@ -1,6 +1,5 @@
 package Logica;
 
-import java.sql.Date;
 
 public class Materia {
  private String codigo ;
