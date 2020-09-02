@@ -9,16 +9,17 @@ public class Materia {
 	private String nombre;
 	private Orientacion orientacion;
 	private Generacion generacion;
+	Docente docente;//relacion
 	
+	
+	//constructor
 	public Materia(String codigo, String nombre, Orientacion orientacion, Generacion generacion)// constructor
 	{
 		this.codigo = codigo;
 		this.nombre = nombre;
 	}
-
-	//relaciones
-	HashSet<Docente>Docente = new HashSet<Docente>();
 	
+	//geters y seters
 	public String getCodigo() {
 		return codigo;
 	}
