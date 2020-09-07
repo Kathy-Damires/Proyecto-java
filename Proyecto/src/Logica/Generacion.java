@@ -1,4 +1,4 @@
-package Logica;
+package Logica; 
 
 public enum Generacion {
 	 PRIMERO,

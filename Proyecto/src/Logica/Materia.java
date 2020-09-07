@@ -1,4 +1,4 @@
-package Logica;
+package Logica; 
 
 import java.sql.Date;
 import java.util.HashSet;
