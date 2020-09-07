@@ -1,19 +1,23 @@
 package Logica;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Inasistencia {
-	Scanner leer = new Scanner(System.in);
 
 	private Date fecha;
 	private int cantidadHoras;
+	private TipoInasistencia tipo;
 
-	public Inasistencia(int cantidadHoras, Date fecha)// constructor
+	public Inasistencia(int cantidadHoras, Date fecha, TipoInasistencia tipo)// constructor
 	{
 		this.cantidadHoras = cantidadHoras;
 		this.fecha = fecha;
 	}
+	//relaciones
+	HashSet<Materia>Materia = new HashSet<Materia>();
+	HashSet<Estudiante>estudiante = new HashSet<Estudiante>();
 
 	public Date getFecha() {
 		return fecha;

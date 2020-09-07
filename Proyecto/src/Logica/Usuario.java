@@ -1,7 +1,6 @@
 package Logica;
 
-import java.time.LocalDate;
-
+import java.sql.Date;
 
 public class Usuario {
 
@@ -10,9 +9,9 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private String mail;
-	private LocalDate fecha;
+	private Date fecha;
 	
-	public Usuario(String ci, String contraseña, String nombre, String apellido,String mail, LocalDate fecha) {// constructor 
+	public Usuario(String ci, String contraseña, String nombre, String apellido,String mail, Date fecha) {// constructor 
 		this.ci = ci;
 		this.contraseña =contraseña ;
 		this.nombre = nombre;
@@ -56,14 +55,12 @@ public class Usuario {
 		return mail;
 	}
 	
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-
-
 	
 }
 
