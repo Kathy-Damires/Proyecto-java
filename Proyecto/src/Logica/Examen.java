@@ -7,6 +7,7 @@ public class Examen {
 	private Date fecha;
 	private int nota;
 	
+	
 	public Examen(int nota, Date fecha)// constructor
 	{
 		this.nota = nota;
@@ -14,8 +15,9 @@ public class Examen {
 	}
 	
 	//relaciones
-	HashSet<Estudiante>estudiante = new HashSet<Estudiante>();
-	HashSet<Materia>materia = new HashSet<Materia>();
+	Estudiante estudiante;
+	Materia materia;
+	
 	
 	public Date getFecha() {
 		return fecha;

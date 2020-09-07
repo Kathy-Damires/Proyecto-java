@@ -13,7 +13,7 @@ public class Cursada {
 	}
 	
 	//relaciones
-	HashSet<Materia>cursadas = new HashSet<Materia>();
+	Materia materiaCursada;
 	
 	public int getNota() {
 		return nota;

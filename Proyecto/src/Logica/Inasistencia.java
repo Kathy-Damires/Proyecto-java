@@ -9,6 +9,7 @@ public class Inasistencia {
 	private Date fecha;
 	private int cantidadHoras;
 	private TipoInasistencia tipo;
+	
 
 	public Inasistencia(int cantidadHoras, Date fecha, TipoInasistencia tipo)// constructor
 	{
@@ -17,7 +18,7 @@ public class Inasistencia {
 	}
 	//relaciones
 	HashSet<Materia>Materia = new HashSet<Materia>();
-	HashSet<Estudiante>estudiante = new HashSet<Estudiante>();
+	Estudiante estudiante;
 
 	public Date getFecha() {
 		return fecha;

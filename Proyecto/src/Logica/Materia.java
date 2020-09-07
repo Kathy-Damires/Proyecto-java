@@ -9,7 +9,7 @@ public class Materia {
 	private String nombre;
 	private Orientacion orientacion;
 	private Generacion generacion;
-	Docente docente;//relacion
+	
 	
 	
 	//constructor
@@ -18,6 +18,9 @@ public class Materia {
 		this.codigo = codigo;
 		this.nombre = nombre;
 	}
+	
+	//relacion
+	Docente materiaDelDocente;
 	
 	//geters y seters
 	public String getCodigo() {
