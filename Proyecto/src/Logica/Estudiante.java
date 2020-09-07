@@ -1,6 +1,7 @@
 package Logica; 
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 
 public class Estudiante extends Usuario{
@@ -8,7 +9,7 @@ public class Estudiante extends Usuario{
 	private Estado estado;
 	private Generacion generacion;
 
-	public Estudiante(String ci, String contraseña, String nombre, String apellido, String mail, Date fecha, Estado estado, Generacion generacion){
+	public Estudiante(String ci, String contraseña, String nombre, String apellido, String mail, LocalDate fecha, Estado estado, Generacion generacion){
 		super(ci, contraseña, nombre, apellido, mail, fecha);
 	
 	}
