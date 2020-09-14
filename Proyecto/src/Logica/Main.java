@@ -4,14 +4,10 @@ import java.time.LocalDate;
 
 public class Main {
 	public static void main(String[] args) {
-		
-		Estudiante estudiante = new Estudiante ("7495", "contrase;a", "Jonathan", "Cembranos", "wdwqd@gmail.com", LocalDate.of(2003,10, 9), null, null); 
-		
-		
-		System.out.println(estudiante);
-		}
 
-	
+		//alta usuario
+		altaUsuario altaUsuario = const Usuario = () {
+		Usuario e1 = new Usuario ("53542683", "contrase;a", "nombre", "apellido", "Mail", LocalDate.of(1996, 3, 13));
+		};
 	}
-
-
+}
