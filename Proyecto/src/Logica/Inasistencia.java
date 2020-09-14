@@ -1,11 +1,11 @@
 package Logica;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 
 public class Inasistencia {
 
-	private Date fecha;
+	private LocalDate fecha;
 	private int cantidadHoras;
 	private TipoInasistencia tipo;
 
@@ -13,17 +13,17 @@ public class Inasistencia {
 	HashSet<Materia> Materia = new HashSet<Materia>();
 	Estudiante estudiante;
 
-	public Inasistencia(int cantidadHoras, Date fecha, TipoInasistencia tipo)// constructor
+	public Inasistencia(int cantidadHoras, LocalDate fecha, TipoInasistencia tipo)// constructor
 	{
 		this.cantidadHoras = cantidadHoras;
 		this.fecha = fecha;
 	}
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 

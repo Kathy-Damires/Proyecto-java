@@ -1,28 +1,34 @@
-package Logica; 
+package Logica;
 
 import java.sql.Date;
 import java.util.HashSet;
-
 
 public class Materia {
 	private String codigo;
 	private String nombre;
 	private Orientacion orientacion;
 	private Generacion generacion;
-	
-	
-	
-	//constructor
+
+	// relacion
+	private Docente materiaDelDocente;
+
+	// constructor
 	public Materia(String codigo, String nombre, Orientacion orientacion, Generacion generacion)// constructor
 	{
 		this.codigo = codigo;
 		this.nombre = nombre;
 	}
-	
-	//relacion
-	Docente materiaDelDocente;
-	
-	//geters y seters
+
+	// geters y seters
+
+	public Docente getMateriaDelDocente() {
+		return materiaDelDocente;
+	}
+
+	public void setMateriaDelDocente(Docente materiaDelDocente) {
+		this.materiaDelDocente = materiaDelDocente;
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}
