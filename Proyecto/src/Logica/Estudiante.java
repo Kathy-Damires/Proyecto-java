@@ -16,9 +16,7 @@ public class Estudiante extends Usuario {
 	private HashSet<Inasistencia> inasistencias = new HashSet<Inasistencia>();
 
 	public Estudiante(String ci, String contraseña, String nombre, String apellido, String mail, LocalDate fecha,
-			Orientacion orientacion, Estado estado, Generacion generacion, HashSet<Cursada> materiasSalvadas,
-			HashSet<Cursada> materiasEnCurso, HashSet<Cursada> materiasNoSalvadas, HashSet<Examen> examenes,
-			HashSet<Inasistencia> inasistencias) {
+			Orientacion orientacion, Estado estado, Generacion generacion) {
 		super(ci, contraseña, nombre, apellido, mail, fecha);
 		this.orientacion = orientacion;
 		this.estado = estado;
