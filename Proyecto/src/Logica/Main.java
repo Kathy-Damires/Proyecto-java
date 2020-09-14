@@ -22,6 +22,6 @@ public class Main {
 		Inasistencia i1 = new Inasistencia(1, LocalDate.of(2019, 5, 15), TipoInasistencia.INJUSTIFICADA);
 
 		// Relaciones
-		
+		((Estudiante)e1).addMateriasEnCurso(programacion);
 	}
 }

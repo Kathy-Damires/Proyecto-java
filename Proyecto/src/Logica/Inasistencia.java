@@ -1,24 +1,50 @@
 package Logica;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 
 public class Inasistencia {
 
 	private LocalDate fecha;
 	private int cantidadHoras;
 	private TipoInasistencia tipo;
+	
 
 	// relaciones
-	HashSet<Materia> Materia = new HashSet<Materia>();
-	Estudiante estudiante;
+	private Materia materia;
+	private Estudiante estudiante;
 
 	public Inasistencia(int cantidadHoras, LocalDate fecha, TipoInasistencia tipo)// constructor
 	{
 		this.cantidadHoras = cantidadHoras;
 		this.fecha = fecha;
+		this.materia = materia;
+		this.estudiante = estudiante;
 	}
 
+	public TipoInasistencia getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoInasistencia tipo) {
+		this.tipo = tipo;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
+	
 	public LocalDate getFecha() {
 		return fecha;
 	}
