@@ -59,8 +59,8 @@ public class Estudiante extends Usuario {
 		return materiasEnCurso;
 	}
 
-	public void addMateriasEnCurso(Materia mat) {
-		this.materiasEnCurso.add(mat);
+	public void addMateriasEnCurso(Cursada cursada) {
+		this.materiasEnCurso.add(cursada);
 	}
 
 	public HashSet<Cursada> getMateriasNoSalvadas() {
