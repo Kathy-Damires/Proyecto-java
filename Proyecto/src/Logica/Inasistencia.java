@@ -9,10 +9,6 @@ public class Inasistencia {
 	private TipoInasistencia tipo;
 	
 
-	// relaciones
-	private Materia materia;
-	private Estudiante estudiante;
-
 	public Inasistencia(int cantidadHoras, LocalDate fecha, TipoInasistencia tipo)// constructor
 	{
 		this.cantidadHoras = cantidadHoras;
@@ -21,6 +17,10 @@ public class Inasistencia {
 		this.estudiante = estudiante;
 	}
 
+	// relaciones
+	private Materia materia;
+	private Estudiante estudiante;
+	
 	public TipoInasistencia getTipo() {
 		return tipo;
 	}

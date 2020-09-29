@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JPasswordField;
+import java.awt.CardLayout;
 
 public class Presentacion extends JFrame {
 
@@ -27,6 +28,8 @@ public class Presentacion extends JFrame {
 	private JTextField txtTuMailgmaicom;
 	private JTextField textField_2;
 	private JTextField txtDia;
+	private JTextField txtMes;
+	private JTextField txtAo;
 
 	/**
 	 * Launch the application.
@@ -54,11 +57,10 @@ public class Presentacion extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new CardLayout(0, 0));
 		
 		JPanel createUser = new JPanel();
-		createUser.setBounds(0, 0, 476, 271);
-		contentPane.add(createUser);
+		contentPane.add(createUser, "createUser");
 		createUser.setLayout(null);
 		
 		textField = new JTextField();
@@ -133,5 +135,24 @@ public class Presentacion extends JFrame {
 		JLabel label = new JLabel("/");
 		label.setBounds(341, 98, 11, 14);
 		createUser.add(label);
+		
+		txtMes = new JTextField();
+		txtMes.setText("mes");
+		txtMes.setBounds(351, 95, 29, 20);
+		createUser.add(txtMes);
+		txtMes.setColumns(10);
+		
+		JLabel label_1 = new JLabel("/");
+		label_1.setBounds(382, 98, 11, 14);
+		createUser.add(label_1);
+		
+		txtAo = new JTextField();
+		txtAo.setText("a\u00F1o");
+		txtAo.setBounds(390, 95, 29, 20);
+		createUser.add(txtAo);
+		txtAo.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, "inicioSesion");
 	}
 }
