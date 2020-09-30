@@ -18,6 +18,8 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JPasswordField;
 import java.awt.CardLayout;
+import javax.swing.JDesktopPane;
+import javax.swing.JTree;
 
 public class Presentacion extends JFrame {
 
@@ -30,6 +32,8 @@ public class Presentacion extends JFrame {
 	private JTextField txtDia;
 	private JTextField txtMes;
 	private JTextField txtAo;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -58,6 +62,43 @@ public class Presentacion extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel login = new JPanel();
+		contentPane.add(login, "inicioSesion");
+		login.setLayout(null);
+		
+		JLabel lblCi_1 = new JLabel("ci:");
+		lblCi_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblCi_1.setBounds(183, 94, 20, 14);
+		login.add(lblCi_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(209, 91, 86, 20);
+		login.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblContrasea_1 = new JLabel("contrase\u00F1a:");
+		lblContrasea_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblContrasea_1.setBounds(135, 119, 68, 14);
+		login.add(lblContrasea_1);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(209, 116, 86, 20);
+		login.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblLogin.setBounds(229, 37, 43, 28);
+		login.add(lblLogin);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(248, 180, 89, 23);
+		login.add(btnLogin);
+		
+		JButton btnCrearUsuario = new JButton("Crear usuario");
+		btnCrearUsuario.setBounds(135, 180, 103, 23);
+		login.add(btnCrearUsuario);
 		
 		JPanel createUser = new JPanel();
 		contentPane.add(createUser, "createUser");
@@ -101,7 +142,6 @@ public class Presentacion extends JFrame {
 		txtTuMailgmaicom.setBounds(80, 219, 86, 20);
 		createUser.add(txtTuMailgmaicom);
 		txtTuMailgmaicom.setForeground(Color.BLACK);
-		txtTuMailgmaicom.setText("tu mail@gmai.com");
 		txtTuMailgmaicom.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Mail:");
@@ -127,7 +167,6 @@ public class Presentacion extends JFrame {
 		
 		txtDia = new JTextField();
 		txtDia.setForeground(Color.GRAY);
-		txtDia.setText("dia");
 		txtDia.setBounds(316, 95, 22, 20);
 		createUser.add(txtDia);
 		txtDia.setColumns(10);
@@ -137,7 +176,6 @@ public class Presentacion extends JFrame {
 		createUser.add(label);
 		
 		txtMes = new JTextField();
-		txtMes.setText("mes");
 		txtMes.setBounds(351, 95, 29, 20);
 		createUser.add(txtMes);
 		txtMes.setColumns(10);
@@ -147,12 +185,14 @@ public class Presentacion extends JFrame {
 		createUser.add(label_1);
 		
 		txtAo = new JTextField();
-		txtAo.setText("a\u00F1o");
 		txtAo.setBounds(390, 95, 29, 20);
 		createUser.add(txtAo);
 		txtAo.setColumns(10);
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel, "inicioSesion");
+		contentPane.add(panel, "name_589994793660900");
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1, "name_591472834284400");
 	}
 }

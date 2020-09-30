@@ -12,7 +12,11 @@ public class Main {
 		Usuario e1 = new Estudiante("ci", "contraseña", "nombre", "apellido", "mail", LocalDate.of(2020, 3, 1),
 				Orientacion.TIC, Estado.ACTIVO, Generacion.PRIMERO);
 
+
 		// alta docente 
+
+		// alta docente
+
 		Usuario d1 = new Docente("ci", "contraseña", "nombre", "apellido", "mail", LocalDate.of(2020, 3, 1));
 
 		// altaMateria
@@ -25,5 +29,4 @@ public class Main {
 		Cursada c1 = new Cursada(8, programacion);
 		((Estudiante) e1).addMateriasEnCurso(c1);
 	}
-
 }
