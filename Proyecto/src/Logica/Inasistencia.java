@@ -9,7 +9,7 @@ public class Inasistencia {
 	private TipoInasistencia tipo;
 	
 
-	public Inasistencia(int cantidadHoras, LocalDate fecha, TipoInasistencia tipo)// constructor
+	public Inasistencia(int cantidadHoras, LocalDate fecha, TipoInasistencia tipo, Materia materia, Estudiante estudiante)// constructor
 	{
 		this.cantidadHoras = cantidadHoras;
 		this.fecha = fecha;
