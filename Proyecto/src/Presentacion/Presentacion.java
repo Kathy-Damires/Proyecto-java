@@ -20,20 +20,27 @@ import javax.swing.JPasswordField;
 import java.awt.CardLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JTree;
+import javax.swing.JTextPane;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JLayeredPane;
 
 public class Presentacion extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField txtCi;
-	private JTextField txtTuMailgmaicom;
-	private JTextField textField_2;
-	private JTextField txtDia;
-	private JTextField txtMes;
-	private JTextField txtAo;
+	private JTextField inputContraseñaUsuario;
+	private JTextField inputApellidoUsuario;
+	private JTextField inputCiUsuario;
+	private JTextField inputMailUsuario;
+	private JTextField inputNombreUsuario;
+	private JTextField inputDia;
+	private JTextField inputMes;
+	private JTextField inputAño;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JTextField inputCodigoMateria;
+	private JTextField inputNombreMateria;
+	private JTextField InputOrientacionMateria;
+	private JTextField inputGeneracionMateria;
 
 	/**
 	 * Launch the application.
@@ -62,6 +69,196 @@ public class Presentacion extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel menu = new JPanel();
+		contentPane.add(menu, "name_7267781861199800");
+		
+		JPanel altaUsuario = new JPanel();
+		contentPane.add(altaUsuario, "createUser");
+		altaUsuario.setLayout(null);
+		
+		JLabel lblCrearUsuario = new JLabel("Crear usuario");
+		lblCrearUsuario.setBounds(170, 11, 151, 24);
+		altaUsuario.add(lblCrearUsuario);
+		lblCrearUsuario.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		
+		inputNombreUsuario = new JTextField();
+		inputNombreUsuario.setBounds(80, 95, 86, 20);
+		altaUsuario.add(inputNombreUsuario);
+		inputNombreUsuario.setColumns(10);
+		
+		inputApellidoUsuario = new JTextField();
+		inputApellidoUsuario.setBounds(80, 126, 86, 20);
+		altaUsuario.add(inputApellidoUsuario);
+		inputApellidoUsuario.setColumns(10);
+		
+		inputContraseñaUsuario = new JTextField();
+		inputContraseñaUsuario.setBounds(80, 157, 86, 20);
+		altaUsuario.add(inputContraseñaUsuario);
+		inputContraseñaUsuario.setColumns(10);
+		
+		inputCiUsuario = new JTextField();
+		inputCiUsuario.setToolTipText("sfsf");
+		inputCiUsuario.setBounds(80, 188, 86, 20);
+		altaUsuario.add(inputCiUsuario);
+		inputCiUsuario.setForeground(Color.BLACK);
+		inputCiUsuario.setColumns(10);
+		
+		inputMailUsuario = new JTextField();
+		inputMailUsuario.setBounds(80, 219, 86, 20);
+		altaUsuario.add(inputMailUsuario);
+		inputMailUsuario.setForeground(Color.BLACK);
+		inputMailUsuario.setColumns(10);
+		
+		JLabel lblNombreUsuario = new JLabel("Nombre:");
+		lblNombreUsuario.setBounds(29, 98, 41, 14);
+		altaUsuario.add(lblNombreUsuario);
+		
+		JLabel lblApellidoUsuario = new JLabel("Apellido:");
+		lblApellidoUsuario.setBounds(29, 129, 41, 14);
+		altaUsuario.add(lblApellidoUsuario);
+		
+		JLabel lblCiUsuario = new JLabel("ci:");
+		lblCiUsuario.setBounds(59, 191, 11, 14);
+		altaUsuario.add(lblCiUsuario);
+		
+		JLabel lblNewLabel = new JLabel("Mail:");
+		lblNewLabel.setBounds(48, 222, 22, 14);
+		altaUsuario.add(lblNewLabel);
+		
+		JLabel lblContraseñaUsuario = new JLabel("Contrase\u00F1a:");
+		lblContraseñaUsuario.setBounds(10, 160, 60, 14);
+		altaUsuario.add(lblContraseñaUsuario);
+		
+		JButton btnGuardarUsuario = new JButton("guardar");
+		btnGuardarUsuario.setBounds(395, 237, 71, 23);
+		altaUsuario.add(btnGuardarUsuario);
+		
+		JPanel FechaDeNacimientoUsuario = new JPanel();
+		FechaDeNacimientoUsuario.setBounds(197, 95, 241, 35);
+		altaUsuario.add(FechaDeNacimientoUsuario);
+		FechaDeNacimientoUsuario.setLayout(null);
+		
+		JLabel lblFechaDeNacimientoUsuario = new JLabel("Fecha de nacimiento:");
+		lblFechaDeNacimientoUsuario.setBounds(7, 11, 102, 14);
+		FechaDeNacimientoUsuario.add(lblFechaDeNacimientoUsuario);
+		
+		inputDia = new JTextField();
+		inputDia.setBounds(108, 8, 22, 20);
+		FechaDeNacimientoUsuario.add(inputDia);
+		inputDia.setForeground(Color.GRAY);
+		inputDia.setColumns(10);
+		
+		JLabel label = new JLabel("/");
+		label.setBounds(135, 11, 11, 14);
+		FechaDeNacimientoUsuario.add(label);
+		
+		inputMes = new JTextField();
+		inputMes.setBounds(144, 8, 29, 20);
+		FechaDeNacimientoUsuario.add(inputMes);
+		inputMes.setColumns(10);
+		
+		inputAño = new JTextField();
+		inputAño.setBounds(183, 8, 29, 20);
+		FechaDeNacimientoUsuario.add(inputAño);
+		inputAño.setColumns(10);
+		
+		JLabel label_1 = new JLabel("/");
+		label_1.setBounds(175, 11, 11, 14);
+		FechaDeNacimientoUsuario.add(label_1);
+		
+		JPanel altaMateria = new JPanel();
+		contentPane.add(altaMateria, "name_589994793660900");
+		altaMateria.setLayout(null);
+		
+		JLabel lblCrearMateria = DefaultComponentFactory.getInstance().createLabel("Crear materia");
+		lblCrearMateria.setBounds(157, 5, 151, 29);
+		lblCrearMateria.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		altaMateria.add(lblCrearMateria);
+		
+		inputCodigoMateria = new JTextField();
+		inputCodigoMateria.setBounds(222, 68, 86, 20);
+		altaMateria.add(inputCodigoMateria);
+		inputCodigoMateria.setColumns(10);
+		
+		inputNombreMateria = new JTextField();
+		inputNombreMateria.setBounds(222, 161, 86, 20);
+		altaMateria.add(inputNombreMateria);
+		inputNombreMateria.setColumns(10);
+		
+		InputOrientacionMateria = new JTextField();
+		InputOrientacionMateria.setBounds(222, 99, 86, 20);
+		altaMateria.add(InputOrientacionMateria);
+		InputOrientacionMateria.setColumns(10);
+		
+		inputGeneracionMateria = new JTextField();
+		inputGeneracionMateria.setBounds(222, 130, 86, 20);
+		altaMateria.add(inputGeneracionMateria);
+		inputGeneracionMateria.setColumns(10);
+		
+		JLabel labelNombreMateria = DefaultComponentFactory.getInstance().createLabel("C\u00F3digo");
+		labelNombreMateria.setBounds(157, 71, 92, 14);
+		altaMateria.add(labelNombreMateria);
+		
+		JLabel labelCodigoMateria = DefaultComponentFactory.getInstance().createLabel("Nombre");
+		labelCodigoMateria.setBounds(157, 102, 92, 14);
+		altaMateria.add(labelCodigoMateria);
+		
+		JLabel labelGeneracionMateria = DefaultComponentFactory.getInstance().createLabel("Generaci\u00F3n");
+		labelGeneracionMateria.setBounds(157, 130, 92, 14);
+		altaMateria.add(labelGeneracionMateria);
+		
+		JLabel labelOrientacionMateria = DefaultComponentFactory.getInstance().createLabel("Orientaci\u00F3n");
+		labelOrientacionMateria.setBounds(157, 164, 92, 14);
+		altaMateria.add(labelOrientacionMateria);
+		
+		JButton btnGuardarMateria = new JButton("Guardar");
+		btnGuardarMateria.setBounds(191, 203, 89, 23);
+		altaMateria.add(btnGuardarMateria);
+		
+		JPanel altaInasistencia = new JPanel();
+		contentPane.add(altaInasistencia, "name_591472834284400");
+		altaInasistencia.setLayout(null);
+		
+		JPanel consultarMateria = new JPanel();
+		consultarMateria.setLayout(null);
+		contentPane.add(consultarMateria, "name_7266486128463000");
+		
+		JPanel consultarInasistencia = new JPanel();
+		contentPane.add(consultarInasistencia, "name_7266998621049400");
+		
+		JPanel listarEstudiates = new JPanel();
+		contentPane.add(listarEstudiates, "name_7267049094696900");
+		
+		JPanel listarMaterias = new JPanel();
+		contentPane.add(listarMaterias, "name_7267056620904900");
+		
+		JPanel listarInasistencias = new JPanel();
+		contentPane.add(listarInasistencias, "name_7267062274337900");
+		
+		JPanel listarInasistencias2 = new JPanel();
+		contentPane.add(listarInasistencias2, "name_7267071442693000");
+		
+		JPanel modificarUsiario = new JPanel();
+		contentPane.add(modificarUsiario, "name_7267074492216600");
+		
+		JPanel modificarMateria = new JPanel();
+		contentPane.add(modificarMateria, "name_7267351147469500");
+		
+		JPanel bajaInasistencia = new JPanel();
+		contentPane.add(bajaInasistencia, "name_7267357692936300");
+		
+		JPanel listarEstudiantes = new JPanel();
+		contentPane.add(listarEstudiantes, "name_7267362782124800");
+		
+		JPanel listarHistoricoDeExamenes = new JPanel();
+		contentPane.add(listarHistoricoDeExamenes, "name_7267368213336600");
+		
+		JPanel listarHistoricoDeExamenes2 = new JPanel();
+		contentPane.add(listarHistoricoDeExamenes2, "name_7267373661775800");
+		
+		JPanel listarPendientes = new JPanel();
+		contentPane.add(listarPendientes, "name_7267378307327800");
 		
 		JPanel login = new JPanel();
 		contentPane.add(login, "inicioSesion");
@@ -100,99 +297,16 @@ public class Presentacion extends JFrame {
 		btnCrearUsuario.setBounds(135, 180, 103, 23);
 		login.add(btnCrearUsuario);
 		
-		JPanel createUser = new JPanel();
-		contentPane.add(createUser, "createUser");
-		createUser.setLayout(null);
+		JPanel logout = new JPanel();
+		contentPane.add(logout, "name_7267386525694600");
 		
-		textField = new JTextField();
-		textField.setBounds(80, 157, 86, 20);
-		createUser.add(textField);
-		textField.setColumns(10);
+		JPanel listarClase = new JPanel();
+		contentPane.add(listarClase, "name_7267312426129100");
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(80, 126, 86, 20);
-		createUser.add(textField_1);
-		textField_1.setColumns(10);
+		JPanel listarDocentes = new JPanel();
+		contentPane.add(listarDocentes, "name_7267620451904000");
 		
-		txtCi = new JTextField();
-		txtCi.setToolTipText("sfsf");
-		txtCi.setBounds(80, 188, 86, 20);
-		createUser.add(txtCi);
-		txtCi.setForeground(Color.BLACK);
-		txtCi.setColumns(10);
-		
-		JLabel lblCrearUsuario = new JLabel("Crear usuario");
-		lblCrearUsuario.setBounds(187, 11, 119, 24);
-		createUser.add(lblCrearUsuario);
-		lblCrearUsuario.setFont(new Font("Arial", Font.PLAIN, 20));
-		
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(29, 98, 41, 14);
-		createUser.add(lblNombre);
-		
-		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(29, 129, 41, 14);
-		createUser.add(lblApellido);
-		
-		JLabel lblCi = new JLabel("ci:");
-		lblCi.setBounds(59, 191, 11, 14);
-		createUser.add(lblCi);
-		
-		txtTuMailgmaicom = new JTextField();
-		txtTuMailgmaicom.setBounds(80, 219, 86, 20);
-		createUser.add(txtTuMailgmaicom);
-		txtTuMailgmaicom.setForeground(Color.BLACK);
-		txtTuMailgmaicom.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Mail:");
-		lblNewLabel.setBounds(48, 222, 22, 14);
-		createUser.add(lblNewLabel);
-		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(10, 160, 60, 14);
-		createUser.add(lblContrasea);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(80, 95, 86, 20);
-		createUser.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JButton btnGuardar = new JButton("guardar");
-		btnGuardar.setBounds(395, 237, 71, 23);
-		createUser.add(btnGuardar);
-		
-		JLabel lblFechaDeNasimiento = new JLabel("Fecha de nasimiento:");
-		lblFechaDeNasimiento.setBounds(204, 98, 102, 14);
-		createUser.add(lblFechaDeNasimiento);
-		
-		txtDia = new JTextField();
-		txtDia.setForeground(Color.GRAY);
-		txtDia.setBounds(316, 95, 22, 20);
-		createUser.add(txtDia);
-		txtDia.setColumns(10);
-		
-		JLabel label = new JLabel("/");
-		label.setBounds(341, 98, 11, 14);
-		createUser.add(label);
-		
-		txtMes = new JTextField();
-		txtMes.setBounds(351, 95, 29, 20);
-		createUser.add(txtMes);
-		txtMes.setColumns(10);
-		
-		JLabel label_1 = new JLabel("/");
-		label_1.setBounds(382, 98, 11, 14);
-		createUser.add(label_1);
-		
-		txtAo = new JTextField();
-		txtAo.setBounds(390, 95, 29, 20);
-		createUser.add(txtAo);
-		txtAo.setColumns(10);
-		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, "name_589994793660900");
-		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, "name_591472834284400");
+		JPanel listarFuncionarios = new JPanel();
+		contentPane.add(listarFuncionarios, "name_7267611360304500");
 	}
 }
