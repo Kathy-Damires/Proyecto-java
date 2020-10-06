@@ -23,6 +23,10 @@ import javax.swing.JTree;
 import javax.swing.JTextPane;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JLayeredPane;
+import javax.swing.JTable;
+import javax.swing.JInternalFrame;
+import javax.swing.JToolBar;
+import java.awt.Panel;
 
 public class Presentacion extends JFrame {
 
@@ -41,6 +45,11 @@ public class Presentacion extends JFrame {
 	private JTextField inputNombreMateria;
 	private JTextField InputOrientacionMateria;
 	private JTextField inputGeneracionMateria;
+	private JTextField inputCantidadHorasInasistencia;
+	private JTextField inputFechaInasistencia;
+	private JTextField inputTipoInasistencia;
+	private JTextField inputMateriaInasistencia;
+	private JTextField inputEstudianteInasistencia;
 
 	/**
 	 * Launch the application.
@@ -72,15 +81,42 @@ public class Presentacion extends JFrame {
 		
 		JPanel menu = new JPanel();
 		contentPane.add(menu, "name_7267781861199800");
+		menu.setLayout(null);
+		
+		Panel panelMenu = new Panel();
+		panelMenu.setBounds(0, 0, 106, 261);
+		menu.add(panelMenu);
+		
+		JButton btnMateriaMenu = new JButton("Materias");
+		panelMenu.add(btnMateriaMenu);
+		
+		JButton btnEstudiantesMenu = new JButton("Estudiantes");
+		panelMenu.add(btnEstudiantesMenu);
+		
+		JButton btnInasistenciasMenu = new JButton("Inasistencias");
+		panelMenu.add(btnInasistenciasMenu);
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		panelMenu.add(btnNewButton_4);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		panelMenu.add(btnNewButton_3);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBounds(106, 0, 360, 20);
+		menu.add(panel_1);
+		
+		JPanel logout = new JPanel();
+		contentPane.add(logout, "name_7270980644940500");
 		
 		JPanel altaUsuario = new JPanel();
 		contentPane.add(altaUsuario, "createUser");
 		altaUsuario.setLayout(null);
 		
-		JLabel lblCrearUsuario = new JLabel("Crear usuario");
-		lblCrearUsuario.setBounds(170, 11, 151, 24);
-		altaUsuario.add(lblCrearUsuario);
-		lblCrearUsuario.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		JLabel labelCrearUsuario = new JLabel("Crear usuario");
+		labelCrearUsuario.setBounds(170, 11, 151, 24);
+		altaUsuario.add(labelCrearUsuario);
+		labelCrearUsuario.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		
 		inputNombreUsuario = new JTextField();
 		inputNombreUsuario.setBounds(80, 95, 86, 20);
@@ -110,25 +146,25 @@ public class Presentacion extends JFrame {
 		inputMailUsuario.setForeground(Color.BLACK);
 		inputMailUsuario.setColumns(10);
 		
-		JLabel lblNombreUsuario = new JLabel("Nombre:");
-		lblNombreUsuario.setBounds(29, 98, 41, 14);
-		altaUsuario.add(lblNombreUsuario);
+		JLabel labelNombreUsuario = new JLabel("Nombre:");
+		labelNombreUsuario.setBounds(29, 98, 41, 14);
+		altaUsuario.add(labelNombreUsuario);
 		
-		JLabel lblApellidoUsuario = new JLabel("Apellido:");
-		lblApellidoUsuario.setBounds(29, 129, 41, 14);
-		altaUsuario.add(lblApellidoUsuario);
+		JLabel labelApellidoUsuario = new JLabel("Apellido:");
+		labelApellidoUsuario.setBounds(29, 129, 41, 14);
+		altaUsuario.add(labelApellidoUsuario);
 		
-		JLabel lblCiUsuario = new JLabel("ci:");
-		lblCiUsuario.setBounds(59, 191, 11, 14);
-		altaUsuario.add(lblCiUsuario);
+		JLabel labelCiUsuario = new JLabel("ci:");
+		labelCiUsuario.setBounds(59, 191, 11, 14);
+		altaUsuario.add(labelCiUsuario);
 		
-		JLabel lblNewLabel = new JLabel("Mail:");
-		lblNewLabel.setBounds(48, 222, 22, 14);
-		altaUsuario.add(lblNewLabel);
+		JLabel labelMailUsuario = new JLabel("Mail:");
+		labelMailUsuario.setBounds(48, 222, 22, 14);
+		altaUsuario.add(labelMailUsuario);
 		
-		JLabel lblContraseñaUsuario = new JLabel("Contrase\u00F1a:");
-		lblContraseñaUsuario.setBounds(10, 160, 60, 14);
-		altaUsuario.add(lblContraseñaUsuario);
+		JLabel labelContraseñaUsuario = new JLabel("Contrase\u00F1a:");
+		labelContraseñaUsuario.setBounds(10, 160, 60, 14);
+		altaUsuario.add(labelContraseñaUsuario);
 		
 		JButton btnGuardarUsuario = new JButton("guardar");
 		btnGuardarUsuario.setBounds(395, 237, 71, 23);
@@ -171,10 +207,26 @@ public class Presentacion extends JFrame {
 		contentPane.add(altaMateria, "name_589994793660900");
 		altaMateria.setLayout(null);
 		
-		JLabel lblCrearMateria = DefaultComponentFactory.getInstance().createLabel("Crear materia");
-		lblCrearMateria.setBounds(157, 5, 151, 29);
-		lblCrearMateria.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		altaMateria.add(lblCrearMateria);
+		JLabel labelCrearMateria = DefaultComponentFactory.getInstance().createLabel("Crear materia");
+		labelCrearMateria.setBounds(157, 5, 151, 29);
+		labelCrearMateria.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		altaMateria.add(labelCrearMateria);
+		
+		JLabel labelNombreMateria = DefaultComponentFactory.getInstance().createLabel("C\u00F3digo");
+		labelNombreMateria.setBounds(157, 71, 92, 14);
+		altaMateria.add(labelNombreMateria);
+		
+		JLabel labelCodigoMateria = DefaultComponentFactory.getInstance().createLabel("Nombre");
+		labelCodigoMateria.setBounds(157, 102, 92, 14);
+		altaMateria.add(labelCodigoMateria);
+		
+		JLabel labelGeneracionMateria = DefaultComponentFactory.getInstance().createLabel("Generaci\u00F3n");
+		labelGeneracionMateria.setBounds(157, 130, 92, 14);
+		altaMateria.add(labelGeneracionMateria);
+		
+		JLabel labelOrientacionMateria = DefaultComponentFactory.getInstance().createLabel("Orientaci\u00F3n");
+		labelOrientacionMateria.setBounds(157, 164, 92, 14);
+		altaMateria.add(labelOrientacionMateria);
 		
 		inputCodigoMateria = new JTextField();
 		inputCodigoMateria.setBounds(222, 68, 86, 20);
@@ -196,22 +248,6 @@ public class Presentacion extends JFrame {
 		altaMateria.add(inputGeneracionMateria);
 		inputGeneracionMateria.setColumns(10);
 		
-		JLabel labelNombreMateria = DefaultComponentFactory.getInstance().createLabel("C\u00F3digo");
-		labelNombreMateria.setBounds(157, 71, 92, 14);
-		altaMateria.add(labelNombreMateria);
-		
-		JLabel labelCodigoMateria = DefaultComponentFactory.getInstance().createLabel("Nombre");
-		labelCodigoMateria.setBounds(157, 102, 92, 14);
-		altaMateria.add(labelCodigoMateria);
-		
-		JLabel labelGeneracionMateria = DefaultComponentFactory.getInstance().createLabel("Generaci\u00F3n");
-		labelGeneracionMateria.setBounds(157, 130, 92, 14);
-		altaMateria.add(labelGeneracionMateria);
-		
-		JLabel labelOrientacionMateria = DefaultComponentFactory.getInstance().createLabel("Orientaci\u00F3n");
-		labelOrientacionMateria.setBounds(157, 164, 92, 14);
-		altaMateria.add(labelOrientacionMateria);
-		
 		JButton btnGuardarMateria = new JButton("Guardar");
 		btnGuardarMateria.setBounds(191, 203, 89, 23);
 		altaMateria.add(btnGuardarMateria);
@@ -219,6 +255,60 @@ public class Presentacion extends JFrame {
 		JPanel altaInasistencia = new JPanel();
 		contentPane.add(altaInasistencia, "name_591472834284400");
 		altaInasistencia.setLayout(null);
+		
+		JLabel labelAltaMateria = DefaultComponentFactory.getInstance().createLabel("Pasar inasistencia");
+		labelAltaMateria.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		labelAltaMateria.setBounds(127, 0, 200, 34);
+		altaInasistencia.add(labelAltaMateria);
+		
+		JLabel labelCantidadHorasInasistencia = DefaultComponentFactory.getInstance().createLabel("Cantidad de horas");
+		labelCantidadHorasInasistencia.setBounds(127, 68, 92, 14);
+		altaInasistencia.add(labelCantidadHorasInasistencia);
+		
+		JLabel labelFechaInasistencia = DefaultComponentFactory.getInstance().createLabel("Fecha");
+		labelFechaInasistencia.setBounds(127, 99, 92, 14);
+		altaInasistencia.add(labelFechaInasistencia);
+		
+		JLabel labelTipoInasistencia = DefaultComponentFactory.getInstance().createLabel("Tipo de inasistencia");
+		labelTipoInasistencia.setBounds(126, 127, 93, 14);
+		altaInasistencia.add(labelTipoInasistencia);
+		
+		JLabel labelMateriaInasistencia = DefaultComponentFactory.getInstance().createLabel("Materia");
+		labelMateriaInasistencia.setBounds(127, 158, 92, 14);
+		altaInasistencia.add(labelMateriaInasistencia);
+		
+		JLabel labelEstudianteInasistencia = DefaultComponentFactory.getInstance().createLabel("Estudiante");
+		labelEstudianteInasistencia.setBounds(127, 189, 92, 14);
+		altaInasistencia.add(labelEstudianteInasistencia);
+		
+		inputCantidadHorasInasistencia = new JTextField();
+		inputCantidadHorasInasistencia.setBounds(241, 65, 86, 20);
+		altaInasistencia.add(inputCantidadHorasInasistencia);
+		inputCantidadHorasInasistencia.setColumns(10);
+		
+		inputFechaInasistencia = new JTextField();
+		inputFechaInasistencia.setBounds(241, 96, 86, 20);
+		altaInasistencia.add(inputFechaInasistencia);
+		inputFechaInasistencia.setColumns(10);
+		
+		inputTipoInasistencia = new JTextField();
+		inputTipoInasistencia.setBounds(241, 124, 86, 20);
+		altaInasistencia.add(inputTipoInasistencia);
+		inputTipoInasistencia.setColumns(10);
+		
+		inputMateriaInasistencia = new JTextField();
+		inputMateriaInasistencia.setBounds(241, 155, 86, 20);
+		altaInasistencia.add(inputMateriaInasistencia);
+		inputMateriaInasistencia.setColumns(10);
+		
+		inputEstudianteInasistencia = new JTextField();
+		inputEstudianteInasistencia.setBounds(241, 186, 86, 20);
+		altaInasistencia.add(inputEstudianteInasistencia);
+		inputEstudianteInasistencia.setColumns(10);
+		
+		JButton btnGuardarInasistencia = new JButton("Guardar");
+		btnGuardarInasistencia.setBounds(184, 214, 89, 23);
+		altaInasistencia.add(btnGuardarInasistencia);
 		
 		JPanel consultarMateria = new JPanel();
 		consultarMateria.setLayout(null);
@@ -241,6 +331,7 @@ public class Presentacion extends JFrame {
 		
 		JPanel modificarUsiario = new JPanel();
 		contentPane.add(modificarUsiario, "name_7267074492216600");
+		modificarUsiario.setLayout(null);
 		
 		JPanel modificarMateria = new JPanel();
 		contentPane.add(modificarMateria, "name_7267351147469500");
@@ -296,9 +387,6 @@ public class Presentacion extends JFrame {
 		JButton btnCrearUsuario = new JButton("Crear usuario");
 		btnCrearUsuario.setBounds(135, 180, 103, 23);
 		login.add(btnCrearUsuario);
-		
-		JPanel logout = new JPanel();
-		contentPane.add(logout, "name_7267386525694600");
 		
 		JPanel listarClase = new JPanel();
 		contentPane.add(listarClase, "name_7267312426129100");
