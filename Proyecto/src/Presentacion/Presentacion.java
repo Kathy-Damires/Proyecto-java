@@ -145,7 +145,7 @@ public class Presentacion extends JFrame {
 		inputMailUsuario.setColumns(10);
 		
 		JButton btnGuardarUsuario = new JButton("Guardar");
-		btnGuardarUsuario.setBounds(451, 233, 71, 23);
+		btnGuardarUsuario.setBounds(435, 207, 71, 23);
 		altaUsuario.add(btnGuardarUsuario);
 		
 		JPanel FechaDeNacimientoUsuario = new JPanel();
