@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class controladorBD {
 	// Librera de MySQL
@@ -120,6 +121,16 @@ public class controladorBD {
 	}
 //fin de buscar
 	
+	public static ResultSet altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("INSERT INTO estudiantes(ci, nombre, apellido, fechaNac, email, passwd) VALUES" +"("+ci+nombre+apellido+fechaNac+email+passwd+")" + ";");
+		return res;
+		}
+	
+	// coneccion
 	private static Connection getMySqlConnection() {
 		return null;
 	}
