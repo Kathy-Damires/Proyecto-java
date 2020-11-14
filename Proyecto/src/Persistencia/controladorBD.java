@@ -43,6 +43,15 @@ public class controladorBD {
 		return conn;
 	}
 //Listas
+	public static ResultSet listarUsuarios() throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("SELECT * FROM estudiante");
+		return res;
+	}
+	
 	public static ResultSet listarEstudiantes() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
@@ -50,8 +59,8 @@ public class controladorBD {
 		st = controlador.createStatement();
 		res = st.executeQuery("SELECT * FROM estudiante");
 		return res;
-
 	}
+	
 	public static ResultSet listarMaterias() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;

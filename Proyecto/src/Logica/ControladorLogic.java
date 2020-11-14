@@ -38,4 +38,9 @@ public static ResultSet buscarUsuario(int ci) throws Exception {
 	return controladorBD.buscarUsuario(ci);
 }
 
+public static ResultSet altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+	
+	return controladorBD.buscarUsuario(ci);
+}
+
 }
