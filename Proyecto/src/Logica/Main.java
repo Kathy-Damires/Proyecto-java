@@ -27,6 +27,10 @@ public class Main {
 
 		// Relaciones
 		Cursada c1 = new Cursada(8, programacion);
+<<<<<<< HEAD
+		((Estudiante) e1).addMateriasEnCurso(c1);
+=======
 		((Estudiante) e1).addMateriasEnCurso(c1);*/
+
 	}
 }
