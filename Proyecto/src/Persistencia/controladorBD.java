@@ -99,6 +99,17 @@ public class controladorBD {
 	
 //Fin listas
 	
+//buscar
+	
+	public static ResultSet buscarUsuario(int ci) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("SELECT * FROM ");
+		return res;
+	}
+//fin de buscar
 	
 	private static Connection getMySqlConnection() {
 		return null;

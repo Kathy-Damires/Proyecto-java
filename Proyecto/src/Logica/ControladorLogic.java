@@ -34,5 +34,8 @@ public static ResultSet listarEstudiantesConPendientes() throws Exception {
 }
 //Fin Listas
 
+public static ResultSet buscarUsuario(int ci) throws Exception {
+	return controladorBD.buscarUsuario(ci);
+}
 
 }
