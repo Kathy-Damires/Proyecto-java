@@ -21,7 +21,7 @@ public class controladorLogic {
 
 	public static void altaInasistencia(int cantidadHoras, LocalDate fecha, TipoInasistencia tipo, Materia materia,
 			Estudiante estudiante) {
-		Inasistencia inasistenci = new Inasistencia(cantidadHoras, fecha, tipo);
+		Inasistencia inasistencia = new Inasistencia(cantidadHoras, fecha, tipo, materia, estudiante);
 	}
 
 	public static void consultarUsuario(String ci) {
@@ -29,11 +29,11 @@ public class controladorLogic {
 	}
 
 	public static void consultarMateria(String codigo) {
-
+		//base de datos
 	}
 	
 	 public static void consultarInasistencia(String ci) {
-		   
+		//base de datos
 	 }
 	 
 	 public static void listarEstudiantes() {
@@ -44,7 +44,11 @@ public class controladorLogic {
 		   
 	 }
 	 
-	 public static void listarInasistensias() {
+	 public static void listarInasistencias() {
+		   
+	 }
+	 
+	 public static void listarInasistencias2() {
 		   
 	 }
 	 
@@ -80,7 +84,7 @@ public class controladorLogic {
 		   
 	 }
 	 
-	 public static void logaut() {
+	 public static void logout() {
 		   
 	 }
 	 
@@ -88,8 +92,12 @@ public class controladorLogic {
 		   
 	 }
 	 
-	 public static void listarDocente() {
+	 public static void listarDocentes() {
 		   
+	 }
+	 
+	 public static void listarFuncionarios() {
+		 
 	 }
 	 
 	 
