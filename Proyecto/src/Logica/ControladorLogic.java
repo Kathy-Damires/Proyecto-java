@@ -38,8 +38,12 @@ public static ResultSet buscarUsuario(int ci) throws Exception {
 	return controladorBD.buscarUsuario(ci);
 }
 
-public static void altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
-	controladorBD.altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd);
+public static void altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
+	controladorBD.altaEstudiante(ci, nombre, apellido, fechaNac, email, passwd, generacion, orientacion, estado);
+}
+
+public static void alstaDocente(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+	controladorBD.altaDocente(ci, nombre, apellido, fechaNac, email, passwd);
 }
 
 }

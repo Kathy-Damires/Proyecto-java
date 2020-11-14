@@ -49,7 +49,7 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM estudiante");
+		res = st.executeQuery("SELECT * FROM usuario;");
 		return res;
 	}
 	
@@ -67,7 +67,7 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM materia");
+		res = st.executeQuery("SELECT * FROM materia;");
 		return res;
 
 	}
@@ -76,7 +76,7 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM inasistencia)");
+		res = st.executeQuery("SELECT * FROM inasistencia;)");
 		return res;
 
 	}
@@ -85,7 +85,7 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM docente");
+		res = st.executeQuery("SELECT * FROM docente;");
 		return res;
 	}
 	public static ResultSet listarFuncionarios() throws Exception {
@@ -93,7 +93,7 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM funcionario");
+		res = st.executeQuery("SELECT * FROM funcionario;");
 		return res;
 
 	}
@@ -116,17 +116,28 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM usuario WHERE usuario." + ci);
+		res = st.executeQuery("SELECT * FROM usuario WHERE usuario."+ci+";");
 		return res;
 	}
 //fin de buscar
 	
-	public static ResultSet altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+	public static ResultSet altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("INSERT INTO estudiantes(ci, nombre, apellido, fechaNac, email, passwd) VALUES" +"("+ci+nombre+apellido+fechaNac+email+passwd+")" + ";");
+		res = st.executeQuery("INSERT INTO usuario(ci, nombre, apellido, fechaNac, email, passwd) VALUES" +"("+ci+nombre+apellido+fechaNac+email+passwd+")"+";");
+		res = st.executeQuery("INSERT INTO estudiante(ci, generacion, orientacion, estado) VALUES"+ci+generacion+estado+";");
+		return res;
+		}
+	
+	public static ResultSet altaDocente(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("INSERT INTO usuario(ci, nombre, apellido, fechaNac, email, passwd) VALUES" +"("+ci+nombre+apellido+fechaNac+email+passwd+")"+";");
+		res = st.executeQuery("INSERT INTO docente(ci) VALUES" +"("+ci+")"+";");
 		return res;
 		}
 	
