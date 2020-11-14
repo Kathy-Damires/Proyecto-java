@@ -2,7 +2,6 @@ package Presentacion;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,6 +13,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JPasswordField;
@@ -32,8 +32,39 @@ import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 
+import Logica.ControladorLogic;
+import Logica.Main;
+
 public class Presentacion extends JFrame {
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Presentacion frame = new Presentacion();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	public Presentacion() {
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 530, 366);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		ControladorLogic c = new ControladorLogic();
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[] { 1079, 0 };
+		gbl_contentPane.rowHeights = new int[] { 549, 0 };
+		gbl_contentPane.columnWeights = new double[] { };
+		gbl_contentPane.rowWeights = new double[] { };
+		contentPane.setLayout(gbl_contentPane);
+		
 		getContentPane().setLayout(null);
 		
 		JPanel panelMaster = new JPanel();
@@ -42,7 +73,7 @@ public class Presentacion extends JFrame {
 		panelMaster.setLayout(new CardLayout(0, 0));
 		
 		JPanel paneles = new JPanel();
-		panelMaster.add(paneles, "name_342935592101900");
+		panelMaster.add(paneles, "paneles");
 		paneles.setLayout(new CardLayout(0, 0));
 		
 		JPanel panelAltaUsuario = new JPanel();
@@ -248,66 +279,77 @@ public class Presentacion extends JFrame {
 		paneles.add(panelListarEstudiantes, "panelListarEstudiantes");
 		
 		JLabel lblNewLabel_6 = new JLabel("Listado de estudiantes");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarEstudiantes.add(lblNewLabel_6);
 		
 		JPanel panelListarMaterias = new JPanel();
 		paneles.add(panelListarMaterias, "panelListarMaterias");
 		
 		JLabel lblNewLabel_7 = new JLabel("Listado de materias");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarMaterias.add(lblNewLabel_7);
 		
 		JPanel panelListarInasistencias = new JPanel();
 		paneles.add(panelListarInasistencias, "panelListarInasistencias");
 		
 		JLabel lblNewLabel_8 = new JLabel("Listado de inasistencias");
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarInasistencias.add(lblNewLabel_8);
 		
 		JPanel panelListarClases = new JPanel();
 		paneles.add(panelListarClases, "panelListarClases");
 		
 		JLabel lblNewLabel_10 = new JLabel("Listado de clases");
+		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarClases.add(lblNewLabel_10);
 		
 		JPanel panelListarDocentes = new JPanel();
 		paneles.add(panelListarDocentes, "panelListarDocentes");
 		
 		JLabel lblNewLabel_9 = new JLabel("Listado de docentes");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarDocentes.add(lblNewLabel_9);
 		
 		JPanel panelListarFuncionarios = new JPanel();
 		paneles.add(panelListarFuncionarios, "panelListarFuncionarios");
 		
 		JLabel lblNewLabel_11 = new JLabel("Listado de funcionarios");
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarFuncionarios.add(lblNewLabel_11);
 		
 		JPanel panelEstudiantesConPendientes = new JPanel();
 		paneles.add(panelEstudiantesConPendientes, "panelEstudiantesConPendientes");
 		
 		JLabel lblNewLabel_12 = new JLabel("Estudiantes con pendientes");
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelEstudiantesConPendientes.add(lblNewLabel_12);
 		
 		JPanel panelHistoricoDeExamenes = new JPanel();
 		paneles.add(panelHistoricoDeExamenes, "panelHistoricoDeExamenes");
 		
 		JLabel lblNewLabel_13 = new JLabel("Historico de examenes");
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelHistoricoDeExamenes.add(lblNewLabel_13);
 		
 		JPanel panelModificarUsuario = new JPanel();
 		paneles.add(panelModificarUsuario, "panelModificarUsuario");
 		
 		JLabel lblNewLabel_14 = new JLabel("Modificar usuario");
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelModificarUsuario.add(lblNewLabel_14);
 		
 		JPanel panelModificarMateria = new JPanel();
 		paneles.add(panelModificarMateria, "panelModificarMateria");
 		
 		JLabel lblNewLabel_15 = new JLabel("Modificar materia");
+		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelModificarMateria.add(lblNewLabel_15);
 		
 		JPanel panelBajaInasistencia = new JPanel();
 		paneles.add(panelBajaInasistencia, "panelBajaInasistencia");
 		
 		JLabel lblNewLabel_16 = new JLabel("Dar de baja inasistencia");
+		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelBajaInasistencia.add(lblNewLabel_16);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -315,6 +357,7 @@ public class Presentacion extends JFrame {
 		getContentPane().add(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Ingresar");
+		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Usuario");
@@ -390,6 +433,7 @@ public class Presentacion extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JMenu mnNewMenu_1 = new JMenu("Consultar");
+		mnNewMenu_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Usuario");
@@ -464,6 +508,7 @@ public class Presentacion extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
 		JMenu mnNewMenu_2 = new JMenu("Listar");
+		mnNewMenu_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Estudiantes");
@@ -594,6 +639,7 @@ public class Presentacion extends JFrame {
 		mnNewMenu_2.add(mntmNewMenuItem_11);
 		
 		JMenu mnNewMenu_4 = new JMenu("Examenes");
+		mnNewMenu_4.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_4);
 		
 		JMenuItem mntmNewMenuItem_12 = new JMenuItem("Estudiantes con pendientes");
@@ -643,6 +689,7 @@ public class Presentacion extends JFrame {
 		mnNewMenu_4.add(mntmNewMenuItem_13);
 		
 		JMenu mnNewMenu_3 = new JMenu("Modificar");
+		mnNewMenu_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_3);
 		
 		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Usuario");

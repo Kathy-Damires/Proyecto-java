@@ -1,5 +1,8 @@
 package Persistencia;
 
-public class controladorBD {
+public class ControladorBD {
 	public String driver = "com.mysql.cj.jdbc.Driver";
+	
+	
+	
 }
