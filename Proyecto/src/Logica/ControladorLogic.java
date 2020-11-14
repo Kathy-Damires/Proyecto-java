@@ -13,23 +13,23 @@ public static ResultSet listarEstudiantes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 
-public ResultSet listarMaterias() throws Exception {
+public static ResultSet listarMaterias() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 
-public ResultSet listarInasistencias() throws Exception {
+public static ResultSet listarInasistencias() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 
-public ResultSet listarDocentes() throws Exception {
+public static ResultSet listarDocentes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 
-public ResultSet listarFuncionarios() throws Exception {
+public static ResultSet listarFuncionarios() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 
-public ResultSet listarEstudiantesConPendientes() throws Exception {
+public static ResultSet listarEstudiantesConPendientes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 //Fin Listas

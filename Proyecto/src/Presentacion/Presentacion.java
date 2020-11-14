@@ -42,6 +42,7 @@ import Logica.Orientacion;
 import Logica.Generacion;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import javax.swing.JScrollPane;
 
 public class Presentacion extends JFrame {
 
@@ -324,44 +325,89 @@ public class Presentacion extends JFrame {
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarEstudiantes.add(lblNewLabel_6);
 		
-		ListadoDeEstudiantes = new JTable();
-		ListadoDeEstudiantes.setBounds(0, 306, 515, -280);
-		panelListarEstudiantes.add(ListadoDeEstudiantes);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 306, 515, -280);
+		panelListarEstudiantes.add(scrollPane);
+		
+		listadoDeEstudiantes = new JTable();
+		scrollPane.setViewportView(listadoDeEstudiantes);
 
 		JPanel panelListarMaterias = new JPanel();
 		paneles.add(panelListarMaterias, "panelListarMaterias");
+		panelListarMaterias.setLayout(null);
 
 		JLabel lblNewLabel_7 = new JLabel("Listado de materias");
+		lblNewLabel_7.setBounds(195, 5, 134, 17);
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarMaterias.add(lblNewLabel_7);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 306, 515, -274);
+		panelListarMaterias.add(scrollPane_1);
+		
+		listadoDeMaterias = new JTable();
+		scrollPane_1.setViewportView(listadoDeMaterias);
 
 		JPanel panelListarInasistencias = new JPanel();
 		paneles.add(panelListarInasistencias, "panelListarInasistencias");
+		panelListarInasistencias.setLayout(null);
 
 		JLabel lblNewLabel_8 = new JLabel("Listado de inasistencias");
+		lblNewLabel_8.setBounds(182, 5, 160, 17);
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarInasistencias.add(lblNewLabel_8);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(511, 24, -510, 280);
+		panelListarInasistencias.add(scrollPane_2);
+		
+		listadoDeInasistencias = new JTable();
+		scrollPane_2.setViewportView(listadoDeInasistencias);
 
 		JPanel panelListarDocentes = new JPanel();
 		paneles.add(panelListarDocentes, "panelListarDocentes");
+		panelListarDocentes.setLayout(null);
 
 		JLabel lblNewLabel_9 = new JLabel("Listado de docentes");
+		lblNewLabel_9.setBounds(193, 5, 138, 17);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarDocentes.add(lblNewLabel_9);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(0, 305, 515, -275);
+		panelListarDocentes.add(scrollPane_3);
+		
+		listadoDeDocentes = new JTable();
+		scrollPane_3.setViewportView(listadoDeDocentes);
 
 		JPanel panelListarFuncionarios = new JPanel();
 		paneles.add(panelListarFuncionarios, "panelListarFuncionarios");
+		panelListarFuncionarios.setLayout(null);
 
 		JLabel lblNewLabel_11 = new JLabel("Listado de funcionarios");
+		lblNewLabel_11.setBounds(183, 5, 159, 17);
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarFuncionarios.add(lblNewLabel_11);
+		
+		listadoDeFuncionarios = new JTable();
+		listadoDeFuncionarios.setBounds(0, 306, 515, -274);
+		panelListarFuncionarios.add(listadoDeFuncionarios);
 
 		JPanel panelListarEstudiantesConPendientes = new JPanel();
 		paneles.add(panelListarEstudiantesConPendientes, "panelEstudiantesConPendientes");
+		panelListarEstudiantesConPendientes.setLayout(null);
 
 		JLabel lblNewLabel_12 = new JLabel("Estudiantes con pendientes");
+		lblNewLabel_12.setBounds(167, 5, 190, 17);
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarEstudiantesConPendientes.add(lblNewLabel_12);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(0, 304, 515, -271);
+		panelListarEstudiantesConPendientes.add(scrollPane_4);
+		
+		listadoDeEstudiantesConPendientes = new JTable();
+		scrollPane_4.setViewportView(listadoDeEstudiantesConPendientes);
 
 		JPanel panelReporteDeEstadísticas = new JPanel();
 		paneles.add(panelReporteDeEstadísticas, "panelHistoricoDeExamenes");
@@ -796,7 +842,7 @@ public class Presentacion extends JFrame {
 						dato[7] = result.getString(8);
 						model.addRow(dato);
 					}
-					ListadoDeEstudiantes.setModel(model);
+					listadoDeEstudiantes.setModel(model);
 				}
 				catch (Exception e3) {
 					e3.printStackTrace();
@@ -804,7 +850,202 @@ public class Presentacion extends JFrame {
 			}
 		});
 		
+		panelListarMaterias.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				DefaultTableModel model = new DefaultTableModel() {
+					private static final long serialVersionUID = 1L;
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				model.addColumn("Código");
+				model.addColumn("Nombre");
+				model.addColumn("Orientación");
+				model.addColumn("Generación");
+
+				String[] dato = new String[8];
+
+				try {
+					ResultSet result = ControladorLogic.listarMaterias();
+
+					while (result.next()) {
+						dato[0] = result.getString(1);
+						dato[1] = result.getString(2);
+						dato[2] = result.getString(3);
+						dato[3] = result.getString(4);
+						model.addRow(dato);
+					}
+					listadoDeMaterias.setModel(model);
+				}
+				catch (Exception e3) {
+					e3.printStackTrace();
+				}
+			}
+		});
 		
+		panelListarInasistencias.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				DefaultTableModel model = new DefaultTableModel() {
+					private static final long serialVersionUID = 1L;
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				model.addColumn("Cedula");
+				model.addColumn("Nombre");
+				model.addColumn("Apellido");
+				model.addColumn("Fecha de Nacimiento");
+				model.addColumn("Mail");
+				model.addColumn("Orientación");
+				model.addColumn("Estado");
+				model.addColumn("Generación");
+
+				String[] dato = new String[8];
+
+				try {
+					ResultSet result = ControladorLogic.listarInasistencias();
+
+					while (result.next()) {
+						dato[0] = result.getString(1);
+						dato[1] = result.getString(2);
+						dato[2] = result.getString(3);
+						dato[3] = result.getString(4);
+						dato[4] = result.getString(5);
+						dato[5] = result.getString(6);
+						dato[6] = result.getString(7);
+						dato[7] = result.getString(8);
+						model.addRow(dato);
+					}
+					listadoDeInasistencias.setModel(model);
+				}
+				catch (Exception e3) {
+					e3.printStackTrace();
+				}
+			}
+		});
+		
+		panelListarDocentes.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				DefaultTableModel model = new DefaultTableModel() {
+					private static final long serialVersionUID = 1L;
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				model.addColumn("Cedula");
+				model.addColumn("Nombre");
+				model.addColumn("Apellido");
+				model.addColumn("Fecha de Nacimiento");
+				model.addColumn("Mail");
+				model.addColumn("Orientación");
+				model.addColumn("Estado");
+				model.addColumn("Generación");
+
+				String[] dato = new String[8];
+
+				try {
+					ResultSet result = ControladorLogic.listarDocentes();
+
+					while (result.next()) {
+						dato[0] = result.getString(1);
+						dato[1] = result.getString(2);
+						dato[2] = result.getString(3);
+						dato[3] = result.getString(4);
+						dato[4] = result.getString(5);
+						dato[5] = result.getString(6);
+						dato[6] = result.getString(7);
+						dato[7] = result.getString(8);
+						model.addRow(dato);
+					}
+					listadoDeEstudiantes.setModel(model);
+				}
+				catch (Exception e3) {
+					e3.printStackTrace();
+				}
+			}
+		});
+		
+		panelListarFuncionarios.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				DefaultTableModel model = new DefaultTableModel() {
+					private static final long serialVersionUID = 1L;
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				model.addColumn("Cedula");
+				model.addColumn("Nombre");
+				model.addColumn("Apellido");
+				model.addColumn("Fecha de Nacimiento");
+				model.addColumn("Mail");
+				model.addColumn("Orientación");
+				model.addColumn("Estado");
+				model.addColumn("Generación");
+
+				String[] dato = new String[8];
+
+				try {
+					ResultSet result = ControladorLogic.listarFuncionarios();
+
+					while (result.next()) {
+						dato[0] = result.getString(1);
+						dato[1] = result.getString(2);
+						dato[2] = result.getString(3);
+						dato[3] = result.getString(4);
+						dato[4] = result.getString(5);
+						dato[5] = result.getString(6);
+						dato[6] = result.getString(7);
+						dato[7] = result.getString(8);
+						model.addRow(dato);
+					}
+					listadoDeFuncionarios.setModel(model);
+				}
+				catch (Exception e3) {
+					e3.printStackTrace();
+				}
+			}
+		});
+		
+		panelListarEstudiantesConPendientes.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				DefaultTableModel model = new DefaultTableModel() {
+					private static final long serialVersionUID = 1L;
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				model.addColumn("Cedula");
+				model.addColumn("Codigo");
+				model.addColumn("Fecha");
+				model.addColumn("Nota");
+				model.addColumn("IdExamen");
+
+				String[] dato = new String[8];
+
+				try {
+					ResultSet result = ControladorLogic.listarEstudiantesConPendientes();
+
+					while (result.next()) {
+						dato[0] = result.getString(1);
+						dato[1] = result.getString(2);
+						dato[2] = result.getString(3);
+						dato[3] = result.getString(4);
+						dato[4] = result.getString(5);
+						model.addRow(dato);
+					}
+					listadoDeEstudiantesConPendientes.setModel(model);
+				}
+				catch (Exception e3) {
+					e3.printStackTrace();
+				}
+			}
+		});
+		//Fin listas
 	}
 
 	private JPanel contentPane;
@@ -839,5 +1080,10 @@ public class Presentacion extends JFrame {
 	private JTextField inputDocenteMateria;
 	private JTextField inputCiConsultarUsuario;
 	private JTextField inputNombreOCodigoconsultarMateria;
-	private JTable ListadoDeEstudiantes;
+	private JTable listadoDeEstudiantes;
+	private JTable listadoDeMaterias;
+	private JTable listadoDeInasistencias;
+	private JTable listadoDeDocentes;
+	private JTable listadoDeFuncionarios;
+	private JTable listadoDeEstudiantesConPendientes;
 }
