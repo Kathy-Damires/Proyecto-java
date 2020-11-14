@@ -1,6 +1,12 @@
 package Logica;
 
+import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
+
+import persistencia.Conn;
 
 public class Main {
 	public static void main(String[] args) {
@@ -32,5 +38,28 @@ public class Main {
 =======
 		((Estudiante) e1).addMateriasEnCurso(c1);*/
 
+		Conn connect = new Conn();
+		
+		Connection con = connect.conectarMySQL();
+		
+		Statement s;
+		ResultSet rs;
+		
+		String queSelecciono = "*";
+		String tabla = "usuario";
+		
+		String query = "SELECT " + queSelecciono + " FROM " + tabla;
+		
+		try {
+			s = con.createStatement();
+			rs = s.executeQuery(query);
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("ci") + " " + rs.getString("nombre") + " " + rs.getString("apellido") +" "+ rs.getString("fechaNac") +" "+ rs.getString("email") +" "+ rs.getString("password"));
+			}
+
+		}catch(SQLException ex) {
+			
+		}
 	}
 }

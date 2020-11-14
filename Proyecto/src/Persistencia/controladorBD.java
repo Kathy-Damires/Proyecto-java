@@ -1,15 +1,19 @@
 package Persistencia;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+//import persistencia.Conn;
 
 public class controladorBD {
 	// Librera de MySQL
     public String driver = "com.mysql.cj.jdbc.Driver";
 
     // Nombre de la base de datos
-    public String database = "prueba";
+    public String database = "bd";
 
     // Host
     public String hostname = "127.0.0.1";
@@ -39,4 +43,5 @@ public class controladorBD {
 
         return conn;
     }
+    
 }
