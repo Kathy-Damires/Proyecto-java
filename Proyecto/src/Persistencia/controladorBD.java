@@ -120,7 +120,8 @@ public class controladorBD {
 		return res;
 	}
 //fin de buscar
-	
+
+//Dar de alta una usuario
 	public static ResultSet altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
@@ -138,6 +139,38 @@ public class controladorBD {
 		st = controlador.createStatement();
 		res = st.executeQuery("INSERT INTO usuario(ci, nombre, apellido, fechaNac, email, passwd) VALUES" +"("+ci+nombre+apellido+fechaNac+email+passwd+")"+";");
 		res = st.executeQuery("INSERT INTO docente(ci) VALUES" +"("+ci+")"+";");
+		return res;
+		}
+	
+	public static ResultSet altaFuncionario(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("INSERT INTO usuario(ci, nombre, apellido, fechaNac, email, passwd) VALUES" +"("+ci+nombre+apellido+fechaNac+email+passwd+")"+";");
+		res = st.executeQuery("INSERT INTO funcionario(ci) VALUES" +"("+ci+")"+";");
+		return res;
+		}
+
+//Dar de alta una Materia
+	
+	public static ResultSet altaMateria(String codigoM, String nombre, String orientación, String generación) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("INSERT INTO materia(codigoM, nombre, orientación, generación) VALUES" +"("+codigoM+nombre+orientación+generación+")"+";");
+		return res;
+		}
+
+//Dar de alta una Inasistencia
+	
+	public static ResultSet altaInasistencia(String codigoM, String nombre, String orientación, String generación) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("INSERT INTO materia(codigoM, nombre, orientación, generación) VALUES" +"("+codigoM+nombre+orientación+generación+")"+";");
 		return res;
 		}
 	

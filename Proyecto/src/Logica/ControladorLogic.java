@@ -46,4 +46,12 @@ public static void alstaDocente(int ci, String nombre, String apellido, LocalDat
 	controladorBD.altaDocente(ci, nombre, apellido, fechaNac, email, passwd);
 }
 
+public static void alstaFuncionario(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd) throws Exception {
+	controladorBD.altaFuncionario(ci, nombre, apellido, fechaNac, email, passwd);
+}
+
+public static void alstaMateria(String codigoM, String nombre, String orientación, String generación) throws Exception {
+	controladorBD.altaMateria(codigoM, nombre, orientación, generación);
+}
+
 }
