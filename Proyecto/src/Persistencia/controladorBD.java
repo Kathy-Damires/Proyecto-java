@@ -106,7 +106,7 @@ public class controladorBD {
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM ");
+		res = st.executeQuery("SELECT * FROM usuario WHERE usuario." + ci);
 		return res;
 	}
 //fin de buscar
