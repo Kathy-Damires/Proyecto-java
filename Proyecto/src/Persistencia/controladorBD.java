@@ -44,4 +44,7 @@ public class controladorBD {
         return conn;
     }
     
+    public static void mostrarTabla (String tabla) {
+    	String query = "SELECT *" + " FROM " + tabla;
+    }
 }
