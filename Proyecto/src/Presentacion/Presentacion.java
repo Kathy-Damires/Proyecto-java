@@ -1156,7 +1156,7 @@ public class Presentacion extends JFrame {
 						dato[6] = result.getString(7);
 						dato[7] = result.getString(8);
 						model.addRow(dato);
-					}
+					} 
 					listadoDeEstudiantes.setModel(model);
 				} catch (Exception e3) {
 					e3.printStackTrace();
