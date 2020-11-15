@@ -14,29 +14,25 @@ public static ResultSet listarEstudiantes() throws Exception {
 }
 
 public static ResultSet listarMaterias() throws Exception {
-	return controladorBD.listarEstudiantes();
+	return controladorBD.listarMaterias();
 }
 
 public static ResultSet listarInasistencias() throws Exception {
-	return controladorBD.listarEstudiantes();
+	return controladorBD.listarinasistencias();
 }
 
 public static ResultSet listarDocentes() throws Exception {
-	return controladorBD.listarEstudiantes();
+	return controladorBD.listarDocentes();
 }
 
 public static ResultSet listarFuncionarios() throws Exception {
-	return controladorBD.listarEstudiantes();
+	return controladorBD.listarFuncionarios();
 }
-
+//revisar
 public static ResultSet listarEstudiantesConPendientes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 //Fin Listas
-
-public static ResultSet buscarUsuario(int ci) throws Exception {
-	return controladorBD.buscarUsuario(ci);
-}
 
 public static void altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
 	controladorBD.altaEstudiante(ci, nombre, apellido, fechaNac, email, passwd, generacion, orientacion, estado);
@@ -62,8 +58,16 @@ public static void altaExamen(int ci,String codigoM, LocalDate fecha,int nota,in
 	controladorBD.altaExamen(ci, codigoM, fecha, nota, idExamen);
 }
 
-public static void consultarUsuario(int ci) throws Exception {
-	controladorBD.buscarUsuario(ci);
+public static ResultSet consultarUsuario(int ci) throws Exception {
+	return controladorBD.buscarUsuario(ci);
+}
+
+public static ResultSet consultarMateria(String codigoM) throws Exception {
+	return controladorBD.consultarMateria(codigoM);
+}
+
+public static void modificarMateria(String codigoM, String dato, String newData) throws Exception {
+	controladorBD.modificarMateria(codigoM, dato, newData);
 }
 
 

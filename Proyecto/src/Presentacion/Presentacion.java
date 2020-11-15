@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSplitPane;
@@ -33,16 +32,25 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
-
-import Logica.ControladorLogic;
-import Logica.Main;
 import javax.swing.DefaultComboBoxModel;
-import Logica.TipoInasistencia;
-import Logica.Orientacion;
-import Logica.Generacion;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.JScrollPane;
+
+import java.awt.Color;
+import java.util.Calendar;
+import java.util.Date;
+
+import java.sql.ResultSet;
+import Logica.TipoInasistencia;
+import Logica.Orientacion;
+import Logica.Generacion;
+import Logica.ControladorLogic;
+import Logica.Main;
+import com.toedter.calendar.JDateChooser;
+import java.awt.FlowLayout;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 
 public class Presentacion extends JFrame {
 
@@ -52,6 +60,7 @@ public class Presentacion extends JFrame {
 				try {
 					Presentacion frame = new Presentacion();
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,92 +76,226 @@ public class Presentacion extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		ControladorLogic c = new ControladorLogic();
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 1079, 0 };
-		gbl_contentPane.rowHeights = new int[] { 549, 0 };
-		gbl_contentPane.columnWeights = new double[] {};
-		gbl_contentPane.rowWeights = new double[] {};
-		contentPane.setLayout(gbl_contentPane);
 
 		getContentPane().setLayout(null);
+		contentPane.setLayout(null);
 
 		JPanel panelMaster = new JPanel();
-		panelMaster.setBounds(0, 21, 525, 315);
+		panelMaster.setBounds(0, 21, 514, 306);
 		getContentPane().add(panelMaster);
 		panelMaster.setLayout(new CardLayout(0, 0));
 
 		JPanel paneles = new JPanel();
-		panelMaster.add(paneles, "paneles");
+		panelMaster.add(paneles, "name_430114760766500");
 		paneles.setLayout(new CardLayout(0, 0));
 
-		JPanel panelAltaUsuario = new JPanel();
-		panelAltaUsuario.setToolTipText("dd/mm/aa");
-		paneles.add(panelAltaUsuario, "panelAltaUsuario");
-		panelAltaUsuario.setLayout(null);
+		JPanel panelAltaUsuarios = new JPanel();
+		panelAltaUsuarios.setToolTipText("dd/mm/aa");
+		paneles.add(panelAltaUsuarios, "panelAltaUsuario");
+		panelAltaUsuarios.setLayout(new CardLayout(0, 0));
 
-		JLabel lbl_Usuario = new JLabel("Crear Usuario");
-		lbl_Usuario.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_Usuario.setBounds(200, 37, 94, 20);
-		panelAltaUsuario.add(lbl_Usuario);
+		JPanel panelAltaEstudiante = new JPanel();
+		panelAltaUsuarios.add(panelAltaEstudiante, "Alta Estudiante");
+		panelAltaEstudiante.setLayout(null);
 
-		JLabel lblNombreUsuario = new JLabel("Nombre*");
-		lblNombreUsuario.setBounds(56, 83, 46, 14);
-		panelAltaUsuario.add(lblNombreUsuario);
+		JLabel lblAltaEstudiante = new JLabel("Alta estudiante");
+		lblAltaEstudiante.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAltaEstudiante.setBounds(198, 26, 104, 14);
+		panelAltaEstudiante.add(lblAltaEstudiante);
 
-		inputNombreUsuario_1 = new JTextField();
-		inputNombreUsuario_1.setBounds(123, 80, 86, 20);
-		panelAltaUsuario.add(inputNombreUsuario_1);
-		inputNombreUsuario_1.setColumns(10);
+		JLabel lblCiAltaEstudiante = new JLabel("CI*");
+		lblCiAltaEstudiante.setBounds(91, 69, 46, 14);
+		panelAltaEstudiante.add(lblCiAltaEstudiante);
 
-		JLabel lblApellidoUsuario = new JLabel("Apellido*");
-		lblApellidoUsuario.setBounds(56, 123, 46, 14);
-		panelAltaUsuario.add(lblApellidoUsuario);
+		inputCiAltaEstudiante = new JTextField();
+		inputCiAltaEstudiante.setBounds(149, 66, 86, 20);
+		panelAltaEstudiante.add(inputCiAltaEstudiante);
+		inputCiAltaEstudiante.setColumns(10);
 
-		inputApellidoUsuario_1 = new JTextField();
-		inputApellidoUsuario_1.setBounds(123, 120, 86, 20);
-		panelAltaUsuario.add(inputApellidoUsuario_1);
-		inputApellidoUsuario_1.setColumns(10);
+		JLabel lblNombreAltaEstudiante = new JLabel("Nombre*");
+		lblNombreAltaEstudiante.setBounds(91, 108, 59, 14);
+		panelAltaEstudiante.add(lblNombreAltaEstudiante);
 
-		JLabel lblContraseñaUsuario = new JLabel("Contrase\u00F1a*");
-		lblContraseñaUsuario.setBounds(56, 168, 57, 14);
-		panelAltaUsuario.add(lblContraseñaUsuario);
+		inputNombreAltaEstudiante = new JTextField();
+		inputNombreAltaEstudiante.setBounds(149, 105, 86, 20);
+		panelAltaEstudiante.add(inputNombreAltaEstudiante);
+		inputNombreAltaEstudiante.setColumns(10);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(123, 165, 86, 20);
-		panelAltaUsuario.add(passwordField);
+		JLabel lblApellidoAltaEstudiante = new JLabel("Apellido*");
+		lblApellidoAltaEstudiante.setBounds(91, 147, 59, 14);
+		panelAltaEstudiante.add(lblApellidoAltaEstudiante);
 
-		JLabel lblCiUsuario = new JLabel("Ci*");
-		lblCiUsuario.setBounds(56, 211, 46, 14);
-		panelAltaUsuario.add(lblCiUsuario);
+		inputApelidoAltaEstudiante = new JTextField();
+		inputApelidoAltaEstudiante.setBounds(149, 144, 86, 20);
+		panelAltaEstudiante.add(inputApelidoAltaEstudiante);
+		inputApelidoAltaEstudiante.setColumns(10);
 
-		inputCiUsuario_1 = new JTextField();
-		inputCiUsuario_1.setBounds(123, 208, 86, 20);
-		panelAltaUsuario.add(inputCiUsuario_1);
-		inputCiUsuario_1.setColumns(10);
+		JLabel lblFechaNacAltaEstudiante = new JLabel("Fecha de Nacimiento*");
+		lblFechaNacAltaEstudiante.setBounds(38, 185, 127, 14);
+		panelAltaEstudiante.add(lblFechaNacAltaEstudiante);
 
-		JLabel lblMailUsuario = new JLabel("Mail*");
-		lblMailUsuario.setBounds(56, 253, 46, 14);
-		panelAltaUsuario.add(lblMailUsuario);
+		JDateChooser dateChooserAltaEstudiante = new JDateChooser();
+		dateChooserAltaEstudiante.setBounds(165, 179, 70, 20);
+		panelAltaEstudiante.add(dateChooserAltaEstudiante);
 
-		inputMailUsuario_1 = new JTextField();
-		inputMailUsuario_1.setBounds(123, 250, 124, 20);
-		panelAltaUsuario.add(inputMailUsuario_1);
-		inputMailUsuario_1.setColumns(10);
+		JLabel lblMailAltaEstudiante = new JLabel("Mail*");
+		lblMailAltaEstudiante.setBounds(91, 224, 46, 14);
+		panelAltaEstudiante.add(lblMailAltaEstudiante);
 
-		JButton btnGuardarUsuario = new JButton("Guardar");
-		btnGuardarUsuario.setBounds(368, 249, 89, 23);
-		panelAltaUsuario.add(btnGuardarUsuario);
+		inputMailAltaEstudiante = new JTextField();
+		inputMailAltaEstudiante.setBounds(124, 221, 111, 20);
+		panelAltaEstudiante.add(inputMailAltaEstudiante);
+		inputMailAltaEstudiante.setColumns(10);
 
-		JLabel lblFechaNacUsuario = new JLabel("Fecha de nacimiento");
-		lblFechaNacUsuario.setBounds(260, 83, 98, 14);
-		panelAltaUsuario.add(lblFechaNacUsuario);
+		JLabel lblContraseñaAltaEstudiante = new JLabel("Contrase\u00F1a*");
+		lblContraseñaAltaEstudiante.setBounds(259, 69, 78, 14);
+		panelAltaEstudiante.add(lblContraseñaAltaEstudiante);
 
-		inputFechaNacUsuario = new JTextField();
-		inputFechaNacUsuario.setText("dd/mm/aa");
-		inputFechaNacUsuario.setToolTipText("dd/mm/aa");
-		inputFechaNacUsuario.setBounds(368, 80, 86, 20);
-		panelAltaUsuario.add(inputFechaNacUsuario);
-		inputFechaNacUsuario.setColumns(10);
+		inputContraseñaAltaEstudiante = new JPasswordField();
+		inputContraseñaAltaEstudiante.setBounds(347, 66, 86, 20);
+		panelAltaEstudiante.add(inputContraseñaAltaEstudiante);
+
+		JLabel lblGeneracionAltaEstudiante = new JLabel("Generacion*");
+		lblGeneracionAltaEstudiante.setBounds(259, 108, 70, 14);
+		panelAltaEstudiante.add(lblGeneracionAltaEstudiante);
+
+		JLabel lblOrientacionAltaEstudiante = new JLabel("Orientacion*");
+		lblOrientacionAltaEstudiante.setBounds(259, 147, 86, 14);
+		panelAltaEstudiante.add(lblOrientacionAltaEstudiante);
+
+		JButton btnGuardarEstudiante = new JButton("Guardar");
+		btnGuardarEstudiante.setBounds(347, 220, 89, 23);
+		panelAltaEstudiante.add(btnGuardarEstudiante);
+
+		JPanel panelAltaFuncionario = new JPanel();
+		panelAltaUsuarios.add(panelAltaFuncionario, "name_380258051299700");
+		panelAltaFuncionario.setLayout(null);
+
+		JLabel lblAltaDocente = new JLabel("Alta Docente");
+		lblAltaDocente.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAltaDocente.setBounds(213, 23, 96, 14);
+		panelAltaFuncionario.add(lblAltaDocente);
+
+		JLabel lblCiAltaDocente = new JLabel("Ci*");
+		lblCiAltaDocente.setBounds(181, 61, 46, 14);
+		panelAltaFuncionario.add(lblCiAltaDocente);
+
+		inputCiAltaDocente = new JTextField();
+		inputCiAltaDocente.setBounds(250, 58, 86, 20);
+		panelAltaFuncionario.add(inputCiAltaDocente);
+		inputCiAltaDocente.setColumns(10);
+
+		JLabel lblNombreAltaDocente = new JLabel("Nombre*");
+		lblNombreAltaDocente.setBounds(181, 92, 59, 14);
+		panelAltaFuncionario.add(lblNombreAltaDocente);
+
+		inputNombreAltaDocente = new JTextField();
+		inputNombreAltaDocente.setBounds(250, 89, 86, 20);
+		panelAltaFuncionario.add(inputNombreAltaDocente);
+		inputNombreAltaDocente.setColumns(10);
+
+		JLabel lblApellidoAltaDocente = new JLabel("Apellido*");
+		lblApellidoAltaDocente.setBounds(181, 123, 59, 14);
+		panelAltaFuncionario.add(lblApellidoAltaDocente);
+
+		inputApellidoAltaDocente = new JTextField();
+		inputApellidoAltaDocente.setBounds(250, 120, 86, 20);
+		panelAltaFuncionario.add(inputApellidoAltaDocente);
+		inputApellidoAltaDocente.setColumns(10);
+
+		JLabel lblFechaNacAltaDocente = new JLabel("Fecha de nacimiento*");
+		lblFechaNacAltaDocente.setBounds(136, 157, 123, 14);
+		panelAltaFuncionario.add(lblFechaNacAltaDocente);
+
+		JDateChooser dateChooserFechaNacAltaDocente = new JDateChooser();
+		dateChooserFechaNacAltaDocente.setBounds(266, 151, 70, 20);
+		panelAltaFuncionario.add(dateChooserFechaNacAltaDocente);
+
+		JLabel lblMailAltaDocente = new JLabel("Mail*");
+		lblMailAltaDocente.setBounds(181, 185, 46, 14);
+		panelAltaFuncionario.add(lblMailAltaDocente);
+
+		inputMailAltaDocente = new JTextField();
+		inputMailAltaDocente.setBounds(227, 182, 109, 20);
+		panelAltaFuncionario.add(inputMailAltaDocente);
+		inputMailAltaDocente.setColumns(10);
+
+		JLabel lblPasswordAltaDocente = new JLabel("Contrase\u00F1a*");
+		lblPasswordAltaDocente.setBounds(171, 216, 80, 14);
+		panelAltaFuncionario.add(lblPasswordAltaDocente);
+
+		inputPassswordAltaDocente = new JPasswordField();
+		inputPassswordAltaDocente.setBounds(250, 213, 86, 20);
+		panelAltaFuncionario.add(inputPassswordAltaDocente);
+
+		JButton btnGuardarDocente = new JButton("Guardar");
+		btnGuardarDocente.setBounds(213, 257, 89, 23);
+		panelAltaFuncionario.add(btnGuardarDocente);
+
+		JPanel panelAltaDocente = new JPanel();
+		panelAltaUsuarios.add(panelAltaDocente, "name_380258084156100");
+		panelAltaDocente.setLayout(null);
+
+		JLabel lblAltaFuncionario = new JLabel("Alta Funcionario");
+		lblAltaFuncionario.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAltaFuncionario.setBounds(206, 27, 123, 14);
+		panelAltaDocente.add(lblAltaFuncionario);
+
+		JLabel lblCiAltaFuncionario = new JLabel("Ci*");
+		lblCiAltaFuncionario.setBounds(189, 58, 46, 14);
+		panelAltaDocente.add(lblCiAltaFuncionario);
+
+		inputCiAltaFuncionario = new JTextField();
+		inputCiAltaFuncionario.setBounds(267, 55, 86, 20);
+		panelAltaDocente.add(inputCiAltaFuncionario);
+		inputCiAltaFuncionario.setColumns(10);
+
+		JLabel lblNombreAltaFuncionario = new JLabel("Nombre*");
+		lblNombreAltaFuncionario.setBounds(189, 89, 68, 14);
+		panelAltaDocente.add(lblNombreAltaFuncionario);
+
+		inputNombreAltaFuncionario = new JTextField();
+		inputNombreAltaFuncionario.setBounds(267, 86, 86, 20);
+		panelAltaDocente.add(inputNombreAltaFuncionario);
+		inputNombreAltaFuncionario.setColumns(10);
+
+		JLabel lblApillidoAltaFuncionario = new JLabel("Apellido*");
+		lblApillidoAltaFuncionario.setBounds(189, 120, 68, 14);
+		panelAltaDocente.add(lblApillidoAltaFuncionario);
+
+		inputApellidoAltaFuncionario = new JTextField();
+		inputApellidoAltaFuncionario.setBounds(267, 117, 86, 20);
+		panelAltaDocente.add(inputApellidoAltaFuncionario);
+		inputApellidoAltaFuncionario.setColumns(10);
+
+		JLabel lblFechaNacAltaFuncionario = new JLabel("Fecha de Nacimiento*");
+		lblFechaNacAltaFuncionario.setBounds(150, 154, 123, 14);
+		panelAltaDocente.add(lblFechaNacAltaFuncionario);
+
+		JDateChooser dateChooserFechaNacAltaFuncionario = new JDateChooser();
+		dateChooserFechaNacAltaFuncionario.setBounds(283, 148, 70, 20);
+		panelAltaDocente.add(dateChooserFechaNacAltaFuncionario);
+
+		JLabel lblMailAltaFuncionario = new JLabel("Mail*");
+		lblMailAltaFuncionario.setBounds(189, 182, 46, 14);
+		panelAltaDocente.add(lblMailAltaFuncionario);
+
+		inputMailAltaFuncionario = new JTextField();
+		inputMailAltaFuncionario.setBounds(230, 179, 123, 20);
+		panelAltaDocente.add(inputMailAltaFuncionario);
+		inputMailAltaFuncionario.setColumns(10);
+
+		JLabel lblPasswordAltaFuncionario = new JLabel("Contrase\u00F1a*");
+		lblPasswordAltaFuncionario.setBounds(189, 213, 86, 14);
+		panelAltaDocente.add(lblPasswordAltaFuncionario);
+
+		inputPasswordAltaFuncionario = new JPasswordField();
+		inputPasswordAltaFuncionario.setBounds(267, 210, 86, 20);
+		panelAltaDocente.add(inputPasswordAltaFuncionario);
+
+		JButton btnGuardarDocente_1 = new JButton("Guardar");
+		btnGuardarDocente_1.setBounds(217, 250, 89, 23);
+		panelAltaDocente.add(btnGuardarDocente_1);
 
 		JPanel panelAltaMateria = new JPanel();
 		paneles.add(panelAltaMateria, "panelAltaMateria");
@@ -164,7 +307,7 @@ public class Presentacion extends JFrame {
 		panelAltaMateria.add(lblNewLabel_1);
 
 		JLabel lblNombreMateria = new JLabel("Nombre*");
-		lblNombreMateria.setBounds(179, 77, 46, 14);
+		lblNombreMateria.setBounds(179, 77, 64, 14);
 		panelAltaMateria.add(lblNombreMateria);
 
 		inputNombreMateria_1 = new JTextField();
@@ -173,7 +316,7 @@ public class Presentacion extends JFrame {
 		inputNombreMateria_1.setColumns(10);
 
 		JLabel lblCodigoMateria = new JLabel("C\u00F3digo*");
-		lblCodigoMateria.setBounds(179, 108, 46, 14);
+		lblCodigoMateria.setBounds(179, 108, 64, 14);
 		panelAltaMateria.add(lblCodigoMateria);
 
 		inputCodigoMateria_1 = new JTextField();
@@ -182,31 +325,19 @@ public class Presentacion extends JFrame {
 		inputCodigoMateria_1.setColumns(10);
 
 		JLabel lblGeneracionMateria = new JLabel("Generaci\u00F3n*");
-		lblGeneracionMateria.setBounds(179, 140, 64, 14);
+		lblGeneracionMateria.setBounds(179, 140, 86, 14);
 		panelAltaMateria.add(lblGeneracionMateria);
 
-		JComboBox selectGeneracionMateria = new JComboBox();
-		selectGeneracionMateria.setModel(new DefaultComboBoxModel(Generacion.values()));
-		selectGeneracionMateria.setMaximumRowCount(3);
-		selectGeneracionMateria.setBounds(268, 136, 86, 22);
-		panelAltaMateria.add(selectGeneracionMateria);
-
 		JLabel lblOrientacionMateria = new JLabel("Orientaci\u00F3n*");
-		lblOrientacionMateria.setBounds(179, 173, 64, 14);
+		lblOrientacionMateria.setBounds(179, 173, 86, 14);
 		panelAltaMateria.add(lblOrientacionMateria);
-
-		JComboBox selectOrientacionMateria = new JComboBox();
-		selectOrientacionMateria.setModel(new DefaultComboBoxModel(Orientacion.values()));
-		selectOrientacionMateria.setMaximumRowCount(2);
-		selectOrientacionMateria.setBounds(268, 169, 86, 22);
-		panelAltaMateria.add(selectOrientacionMateria);
 
 		JButton btnAgregarMateria = new JButton("Agregar");
 		btnAgregarMateria.setBounds(222, 244, 89, 23);
 		panelAltaMateria.add(btnAgregarMateria);
 
 		JLabel lblNewLabel = new JLabel("Docente");
-		lblNewLabel.setBounds(179, 205, 46, 14);
+		lblNewLabel.setBounds(179, 205, 64, 14);
 		panelAltaMateria.add(lblNewLabel);
 
 		inputDocenteMateria = new JTextField();
@@ -248,21 +379,6 @@ public class Presentacion extends JFrame {
 		btnPasarInasistencia.setBounds(212, 237, 89, 23);
 		panelAltaInasistencia.add(btnPasarInasistencia);
 
-		JComboBox selectTipoInasistencia = new JComboBox();
-		selectTipoInasistencia.setMaximumRowCount(3);
-		selectTipoInasistencia.setModel(new DefaultComboBoxModel(TipoInasistencia.values()));
-		selectTipoInasistencia.setSelectedIndex(3);
-		selectTipoInasistencia.setBounds(263, 119, 86, 22);
-		panelAltaInasistencia.add(selectTipoInasistencia);
-
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(263, 155, 86, 22);
-		panelAltaInasistencia.add(comboBox);
-
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(263, 188, 86, 22);
-		panelAltaInasistencia.add(comboBox_1);
-
 		JPanel panelConsultarUsuario = new JPanel();
 		paneles.add(panelConsultarUsuario, "panelConsultarUsuario");
 		panelConsultarUsuario.setLayout(null);
@@ -273,7 +389,7 @@ public class Presentacion extends JFrame {
 		panelConsultarUsuario.add(lblNewLabel_3);
 
 		JLabel lblCiConsultarUsuario = new JLabel("Ingrese CI del usuario que desea consultar");
-		lblCiConsultarUsuario.setBounds(157, 96, 206, 14);
+		lblCiConsultarUsuario.setBounds(142, 96, 250, 14);
 		panelConsultarUsuario.add(lblCiConsultarUsuario);
 
 		inputCiConsultarUsuario = new JTextField();
@@ -295,7 +411,7 @@ public class Presentacion extends JFrame {
 		panelConsultarMateria.add(lblNewLabel_4);
 
 		JLabel lblNombreOCodigoConsultarMateria = new JLabel("Ingrese c\u00F3digo o nombre de la materia a consultar");
-		lblNombreOCodigoConsultarMateria.setBounds(143, 97, 261, 14);
+		lblNombreOCodigoConsultarMateria.setBounds(131, 97, 306, 14);
 		panelConsultarMateria.add(lblNombreOCodigoConsultarMateria);
 
 		inputNombreOCodigoconsultarMateria = new JTextField();
@@ -324,13 +440,13 @@ public class Presentacion extends JFrame {
 		lblNewLabel_6.setBounds(185, 5, 155, 17);
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarEstudiantes.add(lblNewLabel_6);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 306, 515, -280);
-		panelListarEstudiantes.add(scrollPane);
-		
+
+		JScrollPane scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(0, 307, 515, -285);
+		panelListarEstudiantes.add(scrollPane_5);
+
 		listadoDeEstudiantes = new JTable();
-		scrollPane.setViewportView(listadoDeEstudiantes);
+		scrollPane_5.setViewportView(listadoDeEstudiantes);
 
 		JPanel panelListarMaterias = new JPanel();
 		paneles.add(panelListarMaterias, "panelListarMaterias");
@@ -340,11 +456,11 @@ public class Presentacion extends JFrame {
 		lblNewLabel_7.setBounds(195, 5, 134, 17);
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarMaterias.add(lblNewLabel_7);
-		
+
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(0, 306, 515, -274);
 		panelListarMaterias.add(scrollPane_1);
-		
+
 		listadoDeMaterias = new JTable();
 		scrollPane_1.setViewportView(listadoDeMaterias);
 
@@ -356,11 +472,11 @@ public class Presentacion extends JFrame {
 		lblNewLabel_8.setBounds(182, 5, 160, 17);
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarInasistencias.add(lblNewLabel_8);
-		
+
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(511, 24, -510, 280);
 		panelListarInasistencias.add(scrollPane_2);
-		
+
 		listadoDeInasistencias = new JTable();
 		scrollPane_2.setViewportView(listadoDeInasistencias);
 
@@ -372,11 +488,11 @@ public class Presentacion extends JFrame {
 		lblNewLabel_9.setBounds(193, 5, 138, 17);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarDocentes.add(lblNewLabel_9);
-		
+
 		JScrollPane scrollPane_3 = new JScrollPane();
 		scrollPane_3.setBounds(0, 305, 515, -275);
 		panelListarDocentes.add(scrollPane_3);
-		
+
 		listadoDeDocentes = new JTable();
 		scrollPane_3.setViewportView(listadoDeDocentes);
 
@@ -388,7 +504,7 @@ public class Presentacion extends JFrame {
 		lblNewLabel_11.setBounds(183, 5, 159, 17);
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarFuncionarios.add(lblNewLabel_11);
-		
+
 		listadoDeFuncionarios = new JTable();
 		listadoDeFuncionarios.setBounds(0, 306, 515, -274);
 		panelListarFuncionarios.add(listadoDeFuncionarios);
@@ -401,18 +517,18 @@ public class Presentacion extends JFrame {
 		lblNewLabel_12.setBounds(167, 5, 190, 17);
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelListarEstudiantesConPendientes.add(lblNewLabel_12);
-		
+
 		JScrollPane scrollPane_4 = new JScrollPane();
 		scrollPane_4.setBounds(0, 304, 515, -271);
 		panelListarEstudiantesConPendientes.add(scrollPane_4);
-		
+
 		listadoDeEstudiantesConPendientes = new JTable();
 		scrollPane_4.setViewportView(listadoDeEstudiantesConPendientes);
 
 		JPanel panelReporteDeEstadísticas = new JPanel();
 		paneles.add(panelReporteDeEstadísticas, "panelHistoricoDeExamenes");
 
-		JLabel lblNewLabel_13 = new JLabel("Historico de examenes");
+		JLabel lblNewLabel_13 = new JLabel("Reporte de estad\u00EDsticas");
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelReporteDeEstadísticas.add(lblNewLabel_13);
 
@@ -437,24 +553,151 @@ public class Presentacion extends JFrame {
 		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelBajaInasistencia.add(lblNewLabel_16);
 
+		JPanel panelIniciarSesion = new JPanel();
+		paneles.add(panelIniciarSesion, "name_430678355821200");
+		panelIniciarSesion.setLayout(null);
+
+		JLabel lblNewLabel_10 = new JLabel("Mail*");
+		lblNewLabel_10.setBounds(167, 69, 46, 14);
+		panelIniciarSesion.add(lblNewLabel_10);
+
+		inputMailLogin = new JTextField();
+		inputMailLogin.setBounds(258, 66, 86, 20);
+		panelIniciarSesion.add(inputMailLogin);
+		inputMailLogin.setColumns(10);
+
+		JLabel lblNewLabel_17 = new JLabel("Ci*");
+		lblNewLabel_17.setBounds(167, 116, 46, 14);
+		panelIniciarSesion.add(lblNewLabel_17);
+
+		InputCiLogin = new JTextField();
+		InputCiLogin.setBounds(258, 113, 86, 20);
+		panelIniciarSesion.add(InputCiLogin);
+		InputCiLogin.setColumns(10);
+
+		JLabel lblNewLabel_18 = new JLabel("Constrase\u00F1a*");
+		lblNewLabel_18.setBounds(167, 162, 86, 14);
+		panelIniciarSesion.add(lblNewLabel_18);
+
+		JLabel lblNewLabel_19 = new JLabel("Iniciar sesion");
+		lblNewLabel_19.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_19.setBounds(205, 33, 111, 14);
+		panelIniciarSesion.add(lblNewLabel_19);
+
+		JButton btnLogin = new JButton("Iniciar sesion");
+		btnLogin.setBounds(191, 212, 111, 23);
+		panelIniciarSesion.add(btnLogin);
+
+		inputPasswordLogin = new JPasswordField();
+		inputPasswordLogin.setBounds(258, 159, 86, 20);
+		panelIniciarSesion.add(inputPasswordLogin);
+
+//menu
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 525, 22);
 		getContentPane().add(menuBar);
 
-		JMenu mnNewMenu = new JMenu("Ingresar");
-		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		menuBar.add(mnNewMenu);
+		// ingresar
+		JMenu menuIngresar = new JMenu("Ingresar");
+		menuIngresar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		menuBar.add(menuIngresar);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Usuario");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		JMenu menuIngresarUsuario = new JMenu("Usuario");
+		menuIngresar.add(menuIngresarUsuario);
+
+		JMenuItem menuIngresarUsuarioEstudiante = new JMenuItem("Estudiante");
+		menuIngresarUsuario.add(menuIngresarUsuarioEstudiante);
+
+		JMenuItem menuIngresarUsuarioDocente = new JMenuItem("Docente");
+		menuIngresarUsuario.add(menuIngresarUsuarioDocente);
+
+		JMenuItem menuIngresarUsuarioFuncionario = new JMenuItem("Funcionario");
+		menuIngresarUsuario.add(menuIngresarUsuarioFuncionario);
+
+		JMenuItem menuIngresarMateria = new JMenuItem("Materia");
+		menuIngresar.add(menuIngresarMateria);
+
+		JMenuItem menuIngresarInasistencia = new JMenuItem("Inasistencia");
+		menuIngresar.add(menuIngresarInasistencia);
+		// fin ingresar
+
+		// consultar
+		JMenu menuConsultar = new JMenu("Consultar");
+		menuConsultar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		menuBar.add(menuConsultar);
+
+		JMenuItem menuConsultarUsuario = new JMenuItem("Usuario");
+		menuConsultar.add(menuConsultarUsuario);
+
+		JMenuItem menuConsultarMateria = new JMenuItem("Materia");
+		menuConsultar.add(menuConsultarMateria);
+
+		JMenuItem menuConsultarInasistencia = new JMenuItem("Inasistencia");
+		menuConsultar.add(menuConsultarInasistencia);
+
+		JMenu menuListar = new JMenu("Listar");
+		menuListar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		menuBar.add(menuListar);
+		// Fin consultar
+
+		// Listar
+		JMenuItem menuListarEstudiantes = new JMenuItem("Estudiantes");
+		menuListar.add(menuListarEstudiantes);
+
+		JMenuItem MenuListarMaterias = new JMenuItem("Materias");
+		menuListar.add(MenuListarMaterias);
+
+		JMenuItem menuListarInasistencias = new JMenuItem("Inasistencias");
+		menuListar.add(menuListarInasistencias);
+
+		JMenuItem menuListarDocentes = new JMenuItem("Docentes");
+		menuListar.add(menuListarDocentes);
+
+		JMenuItem menuListarFuncionarios = new JMenuItem("Funcionarios");
+		menuListar.add(menuListarFuncionarios);
+
+		JMenuItem menuListarEstudiantesConPendientes = new JMenuItem("Estudiantes con pendientes");
+		menuListar.add(menuListarEstudiantesConPendientes);
+		// fin listar
+
+		// reporte
+		JMenu MenuReporte = new JMenu("Reporte");
+		MenuReporte.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		menuBar.add(MenuReporte);
+
+		JMenuItem menuReporteDeEstadisticas = new JMenuItem("Reporte de estadisticas");
+		MenuReporte.add(menuReporteDeEstadisticas);
+		// fin repoprte
+
+		// modificar
+		JMenu menuModificar = new JMenu("Modificar");
+		menuModificar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		menuBar.add(menuModificar);
+
+		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Usuario");
+		menuModificar.add(mntmNewMenuItem_14);
+
+		JMenuItem mntmNewMenuItem_15 = new JMenuItem("Materia");
+		menuModificar.add(mntmNewMenuItem_15);
+
+		JMenuItem mntmNewMenuItem_16 = new JMenuItem("Inasistencia");
+		menuModificar.add(mntmNewMenuItem_16);
+
+		// fin modificar
+
+//funcionalidades menu
+		menuIngresarUsuarioEstudiante.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(true);
+				panelAltaEstudiante.setVisible(true);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -463,21 +706,67 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-
-		mnNewMenu.add(mntmNewMenuItem);
-
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Materia");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+		menuIngresarUsuarioDocente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(true);
+				panelAltaFuncionario.setVisible(false);
+				panelAltaMateria.setVisible(false);
+				panelAltaInasistencia.setVisible(false);
+				panelConsultarUsuario.setVisible(false);
+				panelConsultarMateria.setVisible(false);
+				panelConsultarInasistencia.setVisible(false);
+				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
+				panelListarInasistencias.setVisible(false);
+				panelListarDocentes.setVisible(false);
+				panelListarFuncionarios.setVisible(false);
+				panelListarEstudiantesConPendientes.setVisible(false);
+				panelReporteDeEstadísticas.setVisible(false);
+				panelModificarUsuario.setVisible(false);
+				panelModificarMateria.setVisible(false);
+				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+			}
+		});
+		menuIngresarUsuarioFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(true);
+				panelAltaMateria.setVisible(false);
+				panelAltaInasistencia.setVisible(false);
+				panelConsultarUsuario.setVisible(false);
+				panelConsultarMateria.setVisible(false);
+				panelConsultarInasistencia.setVisible(false);
+				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
+				panelListarInasistencias.setVisible(false);
+				panelListarDocentes.setVisible(false);
+				panelListarFuncionarios.setVisible(false);
+				panelListarEstudiantesConPendientes.setVisible(false);
+				panelReporteDeEstadísticas.setVisible(false);
+				panelModificarUsuario.setVisible(false);
+				panelModificarMateria.setVisible(false);
+				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+			}
+		});
+		menuIngresarMateria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(true);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -486,21 +775,21 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-
-		mnNewMenu.add(mntmNewMenuItem_1);
-
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Inasistencia");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+		menuIngresarInasistencia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(true);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -509,25 +798,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-
-		mnNewMenu.add(mntmNewMenuItem_2);
-
-		JMenu mnNewMenu_1 = new JMenu("Consultar");
-		mnNewMenu_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		menuBar.add(mnNewMenu_1);
-
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Usuario");
-		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+		menuConsultarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(true);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -536,20 +822,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-		mnNewMenu_1.add(mntmNewMenuItem_3);
-
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Materia");
-		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+		menuConsultarMateria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(true);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -558,21 +846,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-
-		mnNewMenu_1.add(mntmNewMenuItem_4);
-
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Inasistencia");
-		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+		menuConsultarInasistencia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(true);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -581,25 +870,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-
-		mnNewMenu_1.add(mntmNewMenuItem_5);
-
-		JMenu mnNewMenu_2 = new JMenu("Listar");
-		mnNewMenu_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		menuBar.add(mnNewMenu_2);
-
-		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Estudiantes");
-		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+		menuListarEstudiantes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(true);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -608,21 +894,48 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+				listadoDeEstudiantes.setVisible(true);
 			}
 		});
-
-		mnNewMenu_2.add(mntmNewMenuItem_7);
-
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Materias");
-		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+		MenuListarMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(true);
+				panelListarInasistencias.setVisible(false);
+				panelListarDocentes.setVisible(false);
+				panelListarFuncionarios.setVisible(false);
+				panelListarEstudiantesConPendientes.setVisible(false);
+				panelReporteDeEstadísticas.setVisible(false);
+				panelModificarUsuario.setVisible(false);
+				panelModificarMateria.setVisible(false);
+				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+				listadoDeMaterias.setVisible(true);
+			}
+		});
+		menuListarInasistencias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
+				panelAltaMateria.setVisible(false);
+				panelAltaInasistencia.setVisible(false);
+				panelConsultarUsuario.setVisible(false);
+				panelConsultarMateria.setVisible(false);
+				panelConsultarInasistencia.setVisible(false);
+				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(true);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -631,44 +944,48 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+				listadoDeMaterias.setVisible(true);
 			}
 		});
-
-		mnNewMenu_2.add(mntmNewMenuItem_6);
-
-		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Inasistencias");
-		mntmNewMenuItem_9.addActionListener(new ActionListener() {
+		menuListarDocentes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
-				panelListarInasistencias.setVisible(true);
-				panelListarDocentes.setVisible(false);
+				panelListarMaterias.setVisible(false);
+				panelListarInasistencias.setVisible(false);
+				panelListarDocentes.setVisible(true);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
 				panelReporteDeEstadísticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+				listadoDeDocentes.setVisible(true);
 			}
 		});
-
-		mnNewMenu_2.add(mntmNewMenuItem_9);
-
-		JMenuItem mntmNewMenuItem_10 = new JMenuItem("Docentes");
-		mntmNewMenuItem_10.addActionListener(new ActionListener() {
+		menuListarFuncionarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(true);
@@ -677,29 +994,23 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+				listadoDeFuncionarios.setVisible(true);
 			}
 		});
-
-		mnNewMenu_2.add(mntmNewMenuItem_10);
-
-		JMenuItem mntmNewMenuItem_11 = new JMenuItem("Funcionarios");
-		mntmNewMenuItem_11.addActionListener(new ActionListener() {
+		menuListarEstudiantesConPendientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		mnNewMenu_2.add(mntmNewMenuItem_11);
-
-		JMenuItem mntmNewMenuItem_12 = new JMenuItem("Estudiantes con pendientes");
-		mnNewMenu_2.add(mntmNewMenuItem_12);
-		mntmNewMenuItem_12.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -708,23 +1019,23 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
+				listadoDeEstudiantesConPendientes.setVisible(true);
 			}
 		});
-
-		JMenu mnNewMenu_4 = new JMenu("Reporte");
-		mnNewMenu_4.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		menuBar.add(mnNewMenu_4);
-
-		JMenuItem mntmNewMenuItem_13 = new JMenuItem("Reporte de estad\u00EDsticas");
-		mntmNewMenuItem_13.addActionListener(new ActionListener() {
+		menuReporteDeEstadisticas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -733,24 +1044,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-		mnNewMenu_4.add(mntmNewMenuItem_13);
-
-		JMenu mnNewMenu_3 = new JMenu("Modificar");
-		mnNewMenu_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		menuBar.add(mnNewMenu_3);
-
-		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Usuario");
 		mntmNewMenuItem_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -759,20 +1068,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(true);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-		mnNewMenu_3.add(mntmNewMenuItem_14);
-
-		JMenuItem mntmNewMenuItem_15 = new JMenuItem("Materia");
 		mntmNewMenuItem_15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -781,20 +1092,22 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(true);
 				panelBajaInasistencia.setVisible(false);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-		mnNewMenu_3.add(mntmNewMenuItem_15);
-
-		JMenuItem mntmNewMenuItem_16 = new JMenuItem("Inasistencia");
 		mntmNewMenuItem_16.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelAltaUsuario.setVisible(false);
+				panelAltaUsuarios.setVisible(false);
+				panelAltaEstudiante.setVisible(false);
+				panelAltaDocente.setVisible(false);
+				panelAltaFuncionario.setVisible(false);
 				panelAltaMateria.setVisible(false);
 				panelAltaInasistencia.setVisible(false);
 				panelConsultarUsuario.setVisible(false);
 				panelConsultarMateria.setVisible(false);
 				panelConsultarInasistencia.setVisible(false);
 				panelListarEstudiantes.setVisible(false);
+				panelListarMaterias.setVisible(false);
 				panelListarInasistencias.setVisible(false);
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
@@ -803,249 +1116,205 @@ public class Presentacion extends JFrame {
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(true);
+				panelIniciarSesion.setVisible(false);
 			}
 		});
-		mnNewMenu_3.add(mntmNewMenuItem_16);
-	
-		//listados
-		panelListarEstudiantes.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				DefaultTableModel model = new DefaultTableModel() {
-					private static final long serialVersionUID = 1L;
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}
-				};
-				model.addColumn("Cedula");
-				model.addColumn("Nombre");
-				model.addColumn("Apellido");
-				model.addColumn("Fecha de Nacimiento");
-				model.addColumn("Mail");
-				model.addColumn("Orientación");
-				model.addColumn("Estado");
-				model.addColumn("Generación");
 
-				String[] dato = new String[8];
-
-				try {
-					ResultSet result = ControladorLogic.listarEstudiantes();
-
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						dato[4] = result.getString(5);
-						dato[5] = result.getString(6);
-						dato[6] = result.getString(7);
-						dato[7] = result.getString(8);
-						model.addRow(dato);
-					}
-					listadoDeEstudiantes.setModel(model);
-				}
-				catch (Exception e3) {
-					e3.printStackTrace();
-				}
-			}
-		});
+//altas
 		
-		panelListarMaterias.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				DefaultTableModel model = new DefaultTableModel() {
-					private static final long serialVersionUID = 1L;
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}
-				};
-				model.addColumn("Código");
-				model.addColumn("Nombre");
-				model.addColumn("Orientación");
-				model.addColumn("Generación");
 
-				String[] dato = new String[8];
-
-				try {
-					ResultSet result = ControladorLogic.listarMaterias();
-
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						model.addRow(dato);
-					}
-					listadoDeMaterias.setModel(model);
-				}
-				catch (Exception e3) {
-					e3.printStackTrace();
-				}
+//tablas de listados
+		// tabla de estudiantes
+		DefaultTableModel model = new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return false;
 			}
-		});
-		
-		panelListarInasistencias.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				DefaultTableModel model = new DefaultTableModel() {
-					private static final long serialVersionUID = 1L;
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}
-				};
-				model.addColumn("Cedula");
-				model.addColumn("Nombre");
-				model.addColumn("Apellido");
-				model.addColumn("Fecha de Nacimiento");
-				model.addColumn("Mail");
-				model.addColumn("Orientación");
-				model.addColumn("Estado");
-				model.addColumn("Generación");
-
-				String[] dato = new String[8];
-
-				try {
-					ResultSet result = ControladorLogic.listarInasistencias();
-
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						dato[4] = result.getString(5);
-						dato[5] = result.getString(6);
-						dato[6] = result.getString(7);
-						dato[7] = result.getString(8);
-						model.addRow(dato);
-					}
-					listadoDeInasistencias.setModel(model);
-				}
-				catch (Exception e3) {
-					e3.printStackTrace();
-				}
+		};
+		model.addColumn("Cedula");
+		model.addColumn("Nombre");
+		model.addColumn("Apellido");
+		model.addColumn("Fecha de Nacimiento");
+		model.addColumn("Mail");
+		model.addColumn("Orientación");
+		model.addColumn("Estado");
+		model.addColumn("Generación");
+		String[] dato = new String[8];
+		try {
+			ResultSet result = ControladorLogic.listarEstudiantes();
+			while (result.next()) {
+				dato[0] = result.getString(1);
+				dato[1] = result.getString(2);
+				dato[2] = result.getString(3);
+				dato[3] = result.getString(4);
+				dato[4] = result.getString(5);
+				dato[5] = result.getString(6);
+				dato[6] = result.getString(7);
+				dato[7] = result.getString(8);
+				model.addRow(dato);
 			}
-		});
-		
-		panelListarDocentes.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				DefaultTableModel model = new DefaultTableModel() {
-					private static final long serialVersionUID = 1L;
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}
-				};
-				model.addColumn("Cedula");
-				model.addColumn("Nombre");
-				model.addColumn("Apellido");
-				model.addColumn("Fecha de Nacimiento");
-				model.addColumn("Mail");
-				model.addColumn("Orientación");
-				model.addColumn("Estado");
-				model.addColumn("Generación");
-
-				String[] dato = new String[8];
-
-				try {
-					ResultSet result = ControladorLogic.listarDocentes();
-
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						dato[4] = result.getString(5);
-						dato[5] = result.getString(6);
-						dato[6] = result.getString(7);
-						dato[7] = result.getString(8);
-						model.addRow(dato);
-					}
-					listadoDeEstudiantes.setModel(model);
-				}
-				catch (Exception e3) {
-					e3.printStackTrace();
-				}
+			listadoDeEstudiantes.setModel(model);
+		} catch (Exception e3) {
+			e3.printStackTrace();
+		}
+		// tabla de materias
+		DefaultTableModel model1 = new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return false;
 			}
-		});
-		
-		panelListarFuncionarios.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				DefaultTableModel model = new DefaultTableModel() {
-					private static final long serialVersionUID = 1L;
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}
-				};
-				model.addColumn("Cedula");
-				model.addColumn("Nombre");
-				model.addColumn("Apellido");
-				model.addColumn("Fecha de Nacimiento");
-				model.addColumn("Mail");
-				model.addColumn("Orientación");
-				model.addColumn("Estado");
-				model.addColumn("Generación");
+		};
+		model1.addColumn("Código");
+		model1.addColumn("Nombre");
+		model1.addColumn("Orientación");
+		model1.addColumn("Generación");
 
-				String[] dato = new String[8];
+		String[] dato1 = new String[4];
 
-				try {
-					ResultSet result = ControladorLogic.listarFuncionarios();
+		try {
+			ResultSet result = ControladorLogic.listarMaterias();
 
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						dato[4] = result.getString(5);
-						dato[5] = result.getString(6);
-						dato[6] = result.getString(7);
-						dato[7] = result.getString(8);
-						model.addRow(dato);
-					}
-					listadoDeFuncionarios.setModel(model);
-				}
-				catch (Exception e3) {
-					e3.printStackTrace();
-				}
+			while (result.next()) {
+				dato1[0] = result.getString(1);
+				dato1[1] = result.getString(2);
+				dato1[2] = result.getString(3);
+				dato1[3] = result.getString(4);
+				model1.addRow(dato1);
 			}
-		});
-		
-		panelListarEstudiantesConPendientes.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				DefaultTableModel model = new DefaultTableModel() {
-					private static final long serialVersionUID = 1L;
-					public boolean isCellEditable(int row, int column) {
-						return false;
-					}
-				};
-				model.addColumn("Cedula");
-				model.addColumn("Codigo");
-				model.addColumn("Fecha");
-				model.addColumn("Nota");
-				model.addColumn("IdExamen");
+			listadoDeMaterias.setModel(model1);
+		} catch (Exception e3) {
+			e3.printStackTrace();
+		}
 
-				String[] dato = new String[8];
+//se pide porientacion y generacion	
 
-				try {
-					ResultSet result = ControladorLogic.listarEstudiantesConPendientes();
-
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						dato[4] = result.getString(5);
-						model.addRow(dato);
-					}
-					listadoDeEstudiantesConPendientes.setModel(model);
-				}
-				catch (Exception e3) {
-					e3.printStackTrace();
-				}
+		// tabla de inasistencias
+		DefaultTableModel model2 = new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return false;
 			}
-		});
-		//Fin listas
+		};
+		model2.addColumn("Cedula");
+		model2.addColumn("Nombre");
+		model2.addColumn("Apellido");
+		model2.addColumn("Fecha de Nacimiento");
+		model2.addColumn("Mail");
+		model2.addColumn("Orientación");
+		model2.addColumn("Estado");
+		model2.addColumn("Generación");
+
+		String[] dato2 = new String[8];
+
+		try {
+			ResultSet result = ControladorLogic.listarInasistencias();
+
+			while (result.next()) {
+				dato2[0] = result.getString(1);
+				dato2[1] = result.getString(2);
+				dato2[2] = result.getString(3);
+				dato2[3] = result.getString(4);
+				dato2[4] = result.getString(5);
+				dato2[5] = result.getString(6);
+				dato2[6] = result.getString(7);
+				dato2[7] = result.getString(8);
+				model2.addRow(dato2);
+			}
+			listadoDeInasistencias.setModel(model2);
+		} catch (Exception e3) {
+			e3.printStackTrace();
+		}
+		// tabla de Docentes
+		DefaultTableModel model3 = new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		model3.addColumn("Cedula");
+		model3.addColumn("Nombre");
+		model3.addColumn("Apellido");
+		model3.addColumn("Fecha de Nacimiento");
+		model3.addColumn("Mail");
+		String[] dato3 = new String[5];
+
+		try {
+			ResultSet result = ControladorLogic.listarDocentes();
+
+			while (result.next()) {
+				dato3[0] = result.getString(1);
+				dato3[1] = result.getString(2);
+				dato3[2] = result.getString(3);
+				dato3[3] = result.getString(4);
+				dato3[4] = result.getString(5);
+				model3.addRow(dato3);
+			}
+			listadoDeEstudiantes.setModel(model3);
+		} catch (Exception e3) {
+			e3.printStackTrace();
+		}
+		// tabla de funcionarios
+
+		DefaultTableModel model4 = new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		model4.addColumn("Cedula");
+		model4.addColumn("Nombre");
+		model4.addColumn("Apellido");
+		model4.addColumn("Fecha de Nacimiento");
+		model4.addColumn("Mail");
+
+		String[] dato4 = new String[5];
+
+		try {
+			ResultSet result = ControladorLogic.listarFuncionarios();
+
+			while (result.next()) {
+				dato4[0] = result.getString(1);
+				dato4[1] = result.getString(2);
+				dato4[2] = result.getString(3);
+				dato4[3] = result.getString(4);
+				dato4[4] = result.getString(5);
+				model4.addRow(dato4);
+			}
+			listadoDeFuncionarios.setModel(model4);
+		} catch (Exception e3) {
+			e3.printStackTrace();
+		}
+		// tabla de estudiantes con pendientes
+		DefaultTableModel model5 = new DefaultTableModel() {
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		model5.addColumn("Cedula");
+		model5.addColumn("Codigo");
+		model5.addColumn("Fecha");
+		model5.addColumn("Nota");
+		model5.addColumn("IdExamen");
+
+		String[] dato5 = new String[5];
+
+		try {
+			ResultSet result = ControladorLogic.listarEstudiantesConPendientes();
+
+			while (result.next()) {
+				dato5[0] = result.getString(1);
+				dato5[1] = result.getString(2);
+				dato5[2] = result.getString(3);
+				dato5[3] = result.getString(4);
+				dato5[4] = result.getString(5);
+				model5.addRow(dato5);
+			}
+			listadoDeEstudiantesConPendientes.setModel(model5);
+		} catch (Exception e3) {
+			e3.printStackTrace();
+		}
+//Fin listas
 	}
 
 	private JPanel contentPane;
@@ -1056,7 +1325,6 @@ public class Presentacion extends JFrame {
 	private JTextField inputNombreUsuario;
 	private JTextField inputDia;
 	private JTextField inputMes;
-	private JTextField inputAño;
 	private JTextField inputCiLogin;
 	private JTextField inputContraseñaLogin;
 	private JTextField inputCodigoMateria;
@@ -1068,22 +1336,34 @@ public class Presentacion extends JFrame {
 	private JTextField inputTipoInasistencia;
 	private JTextField inputMateriaInasistencia;
 	private JTextField inputEstudianteInasistencia;
-	private JTextField inputNombreUsuario_1;
-	private JTextField inputApellidoUsuario_1;
-	private JPasswordField passwordField;
-	private JTextField inputCiUsuario_1;
-	private JTextField inputMailUsuario_1;
 	private JTextField inputNombreMateria_1;
 	private JTextField inputCodigoMateria_1;
 	private JTextField inputCantidadHorasInasistencia_1;
-	private JTextField inputFechaNacUsuario;
 	private JTextField inputDocenteMateria;
 	private JTextField inputCiConsultarUsuario;
 	private JTextField inputNombreOCodigoconsultarMateria;
-	private JTable listadoDeEstudiantes;
 	private JTable listadoDeMaterias;
 	private JTable listadoDeInasistencias;
 	private JTable listadoDeDocentes;
 	private JTable listadoDeFuncionarios;
 	private JTable listadoDeEstudiantesConPendientes;
+	private JTextField inputCiAltaEstudiante;
+	private JTextField inputNombreAltaEstudiante;
+	private JTextField inputApelidoAltaEstudiante;
+	private JTextField inputMailAltaEstudiante;
+	private JPasswordField inputContraseñaAltaEstudiante;
+	private JTextField inputCiAltaDocente;
+	private JTextField inputNombreAltaDocente;
+	private JTextField inputApellidoAltaDocente;
+	private JTextField inputMailAltaDocente;
+	private JPasswordField inputPassswordAltaDocente;
+	private JTextField inputCiAltaFuncionario;
+	private JTextField inputNombreAltaFuncionario;
+	private JTextField inputApellidoAltaFuncionario;
+	private JTextField inputMailAltaFuncionario;
+	private JPasswordField inputPasswordAltaFuncionario;
+	private JTable listadoDeEstudiantes;
+	private JTextField inputMailLogin;
+	private JTextField InputCiLogin;
+	private JPasswordField inputPasswordLogin;
 }

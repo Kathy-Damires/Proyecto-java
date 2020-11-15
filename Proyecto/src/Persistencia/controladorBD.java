@@ -191,9 +191,35 @@ public class controladorBD {
 			Statement st;
 			ResultSet res;
 			st = controlador.createStatement();
-			res = st.executeQuery("INSERT INTO () VALUES" +"("+")"+";");
+			res = st.executeQuery("UPDATE usuario SET"+dato+"='"+newDat+"' WHERE ci="+ci+";");
 			return res;
 			}
+		
+	//Modificar alumno
+		
+		
+//Consultar materia
+		
+		public static ResultSet consultarMateria(String codigoM) throws Exception {
+			Connection controlador = getMySqlConnection();
+			Statement st;
+			ResultSet res;
+			st = controlador.createStatement();
+			res = st.executeQuery("SELECT * FROM materia WHERE materia."+codigoM+";");
+			return res;
+			}
+	
+	//Modificar Materia
+		public static ResultSet modificarMateria(String codigoM, String dato, String newData) throws Exception {
+			Connection controlador = getMySqlConnection();
+			Statement st;
+			ResultSet res;
+			st = controlador.createStatement();
+			res = st.executeQuery("UPDATE materia SET"+dato+"='"+newData+"' WHERE codigoM="+codigoM+";");
+			return res;
+			}
+		
+
 		
 	// coneccion
 	private static Connection getMySqlConnection() {
