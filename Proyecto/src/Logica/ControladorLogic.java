@@ -54,4 +54,17 @@ public static void alstaMateria(String codigoM, String nombre, String orientació
 	controladorBD.altaMateria(codigoM, nombre, orientación, generación);
 }
 
+public static void altaInasistencia(int codigoInasistencia,int ci, String codigoM,String tipo,LocalDate fecha) throws Exception {
+	controladorBD.altaInasistencia(codigoInasistencia, ci, codigoM, tipo, fecha);
+}
+
+public static void altaExamen(int ci,String codigoM, LocalDate fecha,int nota,int idExamen) throws Exception {
+	controladorBD.altaExamen(ci, codigoM, fecha, nota, idExamen);
+}
+
+public static void consultarUsuario(int ci) throws Exception {
+	controladorBD.buscarUsuario(ci);
+}
+
+
 }

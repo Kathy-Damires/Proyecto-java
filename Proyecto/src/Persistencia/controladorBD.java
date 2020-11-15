@@ -108,18 +108,6 @@ public class controladorBD {
 	}
 	
 //Fin listas
-	
-//buscar
-	
-	public static ResultSet buscarUsuario(int ci) throws Exception {
-		Connection controlador = getMySqlConnection();
-		Statement st;
-		ResultSet res;
-		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM usuario WHERE usuario."+ci+";");
-		return res;
-	}
-//fin de buscar
 
 //Dar de alta una usuario
 	public static ResultSet altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
@@ -165,15 +153,48 @@ public class controladorBD {
 
 //Dar de alta una Inasistencia
 	
-	public static ResultSet altaInasistencia(String codigoM, String nombre, String orientación, String generación) throws Exception {
+	public static ResultSet altaInasistencia(int codigoInasistencia,int ci, String codigoM,String tipo,LocalDate fecha) throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
-		res = st.executeQuery("INSERT INTO materia(codigoM, nombre, orientación, generación) VALUES" +"("+codigoM+nombre+orientación+generación+")"+";");
+		res = st.executeQuery("INSERT INTO inasistencia(codigoInasistencia, ci, codigoM, tipo, fecha) VALUES" +"("+codigoInasistencia+ci+codigoM+tipo+fecha+")"+";");
+		return res;
+		}
+
+//Dar de alta un Examen
+	
+	public static ResultSet altaExamen(int ci,String codigoM, LocalDate fecha,int nota,int idExamen) throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("INSERT INTO examen(ci, codigoM, fecha, nota, idExamen) VALUES" +"("+ci+codigoM+fecha+nota+idExamen+")"+";");
 		return res;
 		}
 	
+//Consultar un Usuario
+	
+		public static ResultSet buscarUsuario(int ci) throws Exception {
+			Connection controlador = getMySqlConnection();
+			Statement st;
+			ResultSet res;
+			st = controlador.createStatement();
+			res = st.executeQuery("SELECT * FROM usuario WHERE usuario."+ci+";");
+			return res;
+		}
+		
+	//Modificar un Usuario 
+	
+		public static ResultSet modificarUsuario(int ci,String dato,String newDat) throws Exception {
+			Connection controlador = getMySqlConnection();
+			Statement st;
+			ResultSet res;
+			st = controlador.createStatement();
+			res = st.executeQuery("INSERT INTO () VALUES" +"("+")"+";");
+			return res;
+			}
+		
 	// coneccion
 	private static Connection getMySqlConnection() {
 		return null;
