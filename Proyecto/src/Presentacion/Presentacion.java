@@ -1121,45 +1121,52 @@ public class Presentacion extends JFrame {
 		});
 
 //altas
-		
 
 //tablas de listados
 		// tabla de estudiantes
-		DefaultTableModel model = new DefaultTableModel() {
-			private static final long serialVersionUID = 1L;
-			public boolean isCellEditable(int row, int column) {
-				return false;
+		panelListarEstudiantes.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+
+				DefaultTableModel model = new DefaultTableModel() {
+					private static final long serialVersionUID = 1L;
+
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				};
+				model.addColumn("Cedula");
+				model.addColumn("Nombre");
+				model.addColumn("Apellido");
+				model.addColumn("Fecha de Nacimiento");
+				model.addColumn("Mail");
+				model.addColumn("Orientación");
+				model.addColumn("Estado");
+				model.addColumn("Generación");
+				String[] dato = new String[8];
+				try {
+					ResultSet result = ControladorLogic.listarEstudiantes();
+					while (result.next()) {
+						dato[0] = result.getString(1);
+						dato[1] = result.getString(2);
+						dato[2] = result.getString(3);
+						dato[3] = result.getString(4);
+						dato[4] = result.getString(5);
+						dato[5] = result.getString(6);
+						dato[6] = result.getString(7);
+						dato[7] = result.getString(8);
+						model.addRow(dato);
+					}
+					listadoDeEstudiantes.setModel(model);
+				} catch (Exception e3) {
+					e3.printStackTrace();
+				}
 			}
-		};
-		model.addColumn("Cedula");
-		model.addColumn("Nombre");
-		model.addColumn("Apellido");
-		model.addColumn("Fecha de Nacimiento");
-		model.addColumn("Mail");
-		model.addColumn("Orientación");
-		model.addColumn("Estado");
-		model.addColumn("Generación");
-		String[] dato = new String[8];
-		try {
-			ResultSet result = ControladorLogic.listarEstudiantes();
-			while (result.next()) {
-				dato[0] = result.getString(1);
-				dato[1] = result.getString(2);
-				dato[2] = result.getString(3);
-				dato[3] = result.getString(4);
-				dato[4] = result.getString(5);
-				dato[5] = result.getString(6);
-				dato[6] = result.getString(7);
-				dato[7] = result.getString(8);
-				model.addRow(dato);
-			}
-			listadoDeEstudiantes.setModel(model);
-		} catch (Exception e3) {
-			e3.printStackTrace();
-		}
+		});
 		// tabla de materias
 		DefaultTableModel model1 = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -1191,6 +1198,7 @@ public class Presentacion extends JFrame {
 		// tabla de inasistencias
 		DefaultTableModel model2 = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -1227,6 +1235,7 @@ public class Presentacion extends JFrame {
 		// tabla de Docentes
 		DefaultTableModel model3 = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -1257,6 +1266,7 @@ public class Presentacion extends JFrame {
 
 		DefaultTableModel model4 = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -1287,6 +1297,7 @@ public class Presentacion extends JFrame {
 		// tabla de estudiantes con pendientes
 		DefaultTableModel model5 = new DefaultTableModel() {
 			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}

@@ -5,10 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import Persistencia.controladorBD;
+import Logica.ControladorLogic;
 
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+
 
 		// alta usuarios
 		// alta usuario1
