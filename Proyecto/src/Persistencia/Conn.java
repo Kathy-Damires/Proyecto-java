@@ -10,14 +10,14 @@ public class Conn {
 	public String driver = "com.mysql.cj.jdbc.Driver";
 
 	// Nombre de la base de datos
-	public String database = "prueba";
+	public String database = "bd";
 
 	// Host
 	public String hostname = "127.0.0.1";
 
 	// Puerto
 	public String port = "3306";
-
+	
 	// Ruta de nuestra base de datos (desactivamos el uso de SSL con
 	// "?useSSL=false")
 	public String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database

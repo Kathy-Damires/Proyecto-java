@@ -1,6 +1,6 @@
 package Persistencia;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,9 +12,17 @@ public class controladorBD {
 	Persistencia.Conn connect = new Persistencia.Conn();
 	
 	Connection con = connect.conectarMySQL();
-	
-	
 	//Listas
+	
+	public static ResultSet algo() throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("SELECT * FROM usuario;");
+		return res;
+	}
+	
 	public static ResultSet listarUsuarios() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
