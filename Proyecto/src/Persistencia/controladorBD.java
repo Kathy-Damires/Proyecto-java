@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import Logica.Usuario;
 
 public class controladorBD {
 //coneccion 
@@ -23,13 +26,33 @@ public class controladorBD {
 		return res;
 	}
 	
-	public static ResultSet listarUsuarios() throws Exception {
+	public static ArrayList<Usuario> listarUsuarios() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
 		ResultSet res;
 		st = controlador.createStatement();
 		res = st.executeQuery("SELECT * FROM usuario;");
-		return res;
+		Usuario userToAdd = null;
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		
+		while(res.next()) {
+			int ci = res.getInt("ci");
+			String nombre = res.getString("nombre");
+			//...
+			
+			//averiguo el tipo del usuario
+			//if(esEstudiante){
+				userToAdd = new Estudiante(ci, nombre,..);
+			//} else if (esDocente){
+				userToAdd = new Docente(ci, nombre,..);
+			//} else {
+				userToAdd = new Funcionario(ci, nombre,..);
+			//}
+				
+			usuarios.add(userToAdd);
+		}
+		
+		return usuarios;
 	}
 	
 	public static ResultSet listarEstudiantes() throws Exception {

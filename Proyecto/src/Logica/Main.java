@@ -2,13 +2,15 @@ package Logica;
 
 import java.sql.*;
 
+import Persistencia.controladorBD;
+
 public class Main {
 
 	public static void main(String[] args) {
 
 
-
-
+ControladorLogic c = new ControladorLogic();
+/*
 
 				// TODO Auto-generated method stub
 			Persistencia.Conn connect = new Persistencia.Conn();
@@ -59,6 +61,9 @@ public class Main {
 		} catch (SQLException ex) {
 
 		}
+		*/
+		
+	System.out.println(c.listarUsuarios());
 
 	}
 

@@ -2,6 +2,7 @@ package Logica;
 
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import Persistencia.controladorBD;
@@ -9,7 +10,7 @@ import Persistencia.controladorBD;
 public class ControladorLogic {
 
 //Listas
-public static ResultSet listarUsuarios() throws Exception {
+public static ArrayList<Usuario> listarUsuarios() throws Exception {
 	return controladorBD.listarUsuarios();
 }
 	
