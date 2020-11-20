@@ -1,30 +1,65 @@
 package Logica;
 
 import java.sql.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import Persistencia.controladorBD;
-import Logica.ControladorLogic;
 
 public class Main {
-	public static void main(String[] args) throws Exception {
 
-		controladorBD connect = new controladorBD();
-        Connection controladorBD = connect.conectarMySQL();
+	public static void main(String[] args) {
 
-        Statement s;
 
-        try {
-            s = controladorBD.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM usuario;");
-            while (rs.next()) {
-                System.out.println(rs.getInt("ci"));
-            }
 
-        }catch(SQLException ex) {
 
-        }
+
+				// TODO Auto-generated method stub
+			Persistencia.Conn connect = new Persistencia.Conn();
+
+				Connection con = connect.conectarMySQL();
+
+				Statement s;
+				ResultSet rs;
+
+				String tabla = "usuario";
+
+				String query = "SELECT * FROM " + tabla;
+
+				try {
+					s = con.createStatement();
+					rs = s.executeQuery(query);
+
+					while (rs.next()) {
+						System.out.println(rs.getInt("ci") + " " + rs.getString("nombre") + " " + rs.getString("apellido"));
+					}
+
+				}catch(SQLException ex) {
+
+				}
+
+
+
+		// TODO Auto-generated method stub
+		Persistencia.Conn connect1 = new Persistencia.Conn();
+
+		Connection con1 = connect1.conectarMySQL();
+
+		Statement s1;
+		ResultSet rs1;
+
+		String tabla1 = "usuario";
+
+		String query1 = "SELECT * FROM " + tabla1;
+
+		try {
+			s1 = con1.createStatement();
+			rs1 = s1.executeQuery(query1);
+
+			while (rs1.next()) {
+				System.out.println(rs1.getInt("ci") + " " + rs1.getString("nombre") + " " + rs1.getString("apellido"));
+			}
+
+		} catch (SQLException ex) {
+
+		}
+
 	}
+
 }
