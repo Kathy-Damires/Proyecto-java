@@ -9,6 +9,10 @@ import Persistencia.controladorBD;
 public class ControladorLogic {
 
 //Listas
+public static ResultSet listarUsuarios() throws Exception {
+	return controladorBD.listarUsuarios();
+}
+	
 public static ResultSet listarEstudiantes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
@@ -34,6 +38,7 @@ public static ResultSet listarEstudiantesConPendientes() throws Exception {
 }
 //Fin Listas
 
+//altas
 public static void altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
 	controladorBD.altaEstudiante(ci, nombre, apellido, fechaNac, email, passwd, generacion, orientacion, estado);
 }
@@ -57,6 +62,7 @@ public static void altaInasistencia(int codigoInasistencia,int ci, String codigo
 public static void altaExamen(int ci,String codigoM, LocalDate fecha,int nota,int idExamen) throws Exception {
 	controladorBD.altaExamen(ci, codigoM, fecha, nota, idExamen);
 }
+//fin altas
 
 public static ResultSet consultarUsuario(int ci) throws Exception {
 	return controladorBD.buscarUsuario(ci);
@@ -69,6 +75,5 @@ public static ResultSet consultarMateria(String codigoM) throws Exception {
 public static void modificarMateria(String codigoM, String dato, String newData) throws Exception {
 	controladorBD.modificarMateria(codigoM, dato, newData);
 }
-
 
 }

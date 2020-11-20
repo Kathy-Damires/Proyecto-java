@@ -61,7 +61,6 @@ public class controladorBD {
 		res = st.executeQuery("SELECT * FROM estudiante");
 		return res;
 	}
-	
 	public static ResultSet listarMaterias() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
@@ -223,7 +222,7 @@ public class controladorBD {
 		
 	// coneccion
 	private static Connection getMySqlConnection() {
-		return null;
+		return null ;	
 	}
 
 }
