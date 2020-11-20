@@ -196,7 +196,7 @@ public class controladorBD {
 			res = st.executeQuery("UPDATE materia SET"+dato+"='"+newData+"' WHERE codigoM="+codigoM+";");
 			return res;
 			}
-<<<<<<< HEAD
+
 		
 
 		
@@ -204,7 +204,6 @@ public class controladorBD {
 	private static Connection getMySqlConnection() {
 		return null ;	
 	}
-=======
->>>>>>> branch 'master' of https://github.com/alucard204j/Proyecto-java.git
+
 
 }
