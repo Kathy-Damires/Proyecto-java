@@ -8,7 +8,7 @@ public class Docente extends Usuario {
 	// relaciones
 	private HashSet<Materia> Materias = new HashSet<Materia>();
 
-	public Docente(String ci, String contraseña, String nombre, String apellido, String mail, LocalDate fecha) {
+	public Docente(int ci, String contraseña, String nombre, String apellido, String mail, String fecha) {
 		super(ci, contraseña, nombre, apellido, mail, fecha);
 	}
 
