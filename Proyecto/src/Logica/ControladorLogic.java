@@ -14,7 +14,7 @@ public static ArrayList<Usuario> listarUsuarios() throws Exception {
 	return controladorBD.listarUsuarios();
 }
 	
-public static ResultSet listarEstudiantes() throws Exception {
+public static ArrayList<Estudiante> listarEstudiantes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 
@@ -34,7 +34,7 @@ public static ResultSet listarFuncionarios() throws Exception {
 	return controladorBD.listarFuncionarios();
 }
 //revisar
-public static ResultSet listarEstudiantesConPendientes() throws Exception {
+public static ArrayList<Estudiante> listarEstudiantesConPendientes() throws Exception {
 	return controladorBD.listarEstudiantes();
 }
 //Fin Listas

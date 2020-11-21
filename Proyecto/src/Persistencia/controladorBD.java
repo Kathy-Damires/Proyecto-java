@@ -45,32 +45,40 @@ public class controladorBD {
 			String email = res.getString("email");
 			String password = res.getString("password");
 			// averiguo el tipo del usuario
+			// tipo de usuario Estudiante
 			ResultSet resE;
 			resE = st.executeQuery("SELECT * FROM estudiante;");
-			int ciE = resE.getInt("ci");
 			while (resE.next()) {
+				int ciE = resE.getInt("ci");
 				if (ci == ciE) {
 					String generación = resE.getString("generación");
 					String orientación = resE.getString("orientación");
 					String estado = resE.getString("estado");
 					userToAdd = new Estudiante(ci, password, nombre, apellido, email, fechaNac, orientación, estado,
 							generación);
+					usuarios.add(userToAdd);
 				}
 			}
+			// tipo de usuario Docente
 			ResultSet resD;
 			resD = st.executeQuery("SELECT * FROM docente;");
-			int ciD = resD.getInt("ci");
-			if (ci == ciD) {
-				userToAdd = new Docente(ci, password, nombre, apellido, email, fechaNac);
+			while (resD.next()) {
+				int ciD = resD.getInt("ci");
+				if (ci == ciD) {
+					userToAdd = new Docente(ci, password, nombre, apellido, email, fechaNac);
+					usuarios.add(userToAdd);
+				}
 			}
+			// tipo de usuario Funcionario
 			ResultSet resF;
 			resF = st.executeQuery("SELECT * FROM funcionario;");
-			int ciF = resF.getInt("ci");
-			if (ci == ciF) {
-				userToAdd = new Funcionario(ci, password, nombre, apellido, email, fechaNac);
+			while (resF.next()) {
+				int ciF = resF.getInt("ci");
+				if (ci == ciF) {
+					userToAdd = new Funcionario(ci, password, nombre, apellido, email, fechaNac);
+					usuarios.add(userToAdd);
+				}
 			}
-			usuarios.add(userToAdd);
-
 		}
 		return usuarios;
 	}
@@ -85,18 +93,27 @@ public class controladorBD {
 		ArrayList<Estudiante> estudiantes = new ArrayList<>();
 		while (res.next()) {
 			int ci = res.getInt("ci");
-
-			if (ci == ciF) {
-			}
-			int ci = res.getInt("ci");
 			String generación = res.getString("generación");
 			String orientación = res.getString("orientación");
 			String estado = res.getString("estado");
-			estudianteToAdd = new Estudiante(ci, password, nombre, apellido, email, fecha, orientación, estado,
-					generación);
-			estudiantes.add(estudianteToAdd);
+			ResultSet resU;
+			resU = st.executeQuery("SELECT * FROM usuario;");
+			while (resU.next()) {
+				int ciU = resU.getInt("ci");
+				if (ci == ciU) {
+					String nombre = resU.getString("nombre");
+					String apellido = resU.getString("apellido");
+					String fechaNac = resU.getString("fechaNac");
+					String email = resU.getString("email");
+					String password = resU.getString("password");
+					estudianteToAdd = new Estudiante(ciU, password, nombre, apellido, email, fechaNac, orientación,
+							estado, generación);
+					estudiantes.add(estudianteToAdd);
+				}
+			}
 		}
 		return estudiantes;
+
 	}
 
 	public static ResultSet listarMaterias() throws Exception {
