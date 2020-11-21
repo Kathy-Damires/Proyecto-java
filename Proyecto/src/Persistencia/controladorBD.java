@@ -8,6 +8,10 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import Logica.Estado;
+import Logica.Estudiante;
+import Logica.Generacion;
+import Logica.Orientacion;
 import Logica.Usuario;
 
 public class controladorBD {
@@ -16,7 +20,7 @@ public class controladorBD {
 	
 	Connection con = connect.conectarMySQL();
 	//Listas
-	
+	/*
 	public static ResultSet algo() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
@@ -25,7 +29,7 @@ public class controladorBD {
 		res = st.executeQuery("SELECT * FROM usuario;");
 		return res;
 	}
-	
+	*/
 	public static ArrayList<Usuario> listarUsuarios() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;
@@ -38,16 +42,46 @@ public class controladorBD {
 		while(res.next()) {
 			int ci = res.getInt("ci");
 			String nombre = res.getString("nombre");
-			//...
-			
+			String apellido = res.getString("apellido");
+			String fechaNac = res.getString("fechaNac");
+			String email = res.getString("email");
+			String password = res.getString("password");
 			//averiguo el tipo del usuario
-			//if(esEstudiante){
-				userToAdd = new Estudiante(ci, nombre,..);
-			//} else if (esDocente){
-				userToAdd = new Docente(ci, nombre,..);
-			//} else {
-				userToAdd = new Funcionario(ci, nombre,..);
-			//}
+			ResultSet resE;
+			resE = st.executeQuery("SELECT * FROM estudiante;");
+			int ciE = resE.getInt("ci");
+			if (ci==ciE){
+				String generación = resE.getString("generación");
+				String orientación = resE.getString("orientación");
+				String estado = resE.getString("estado");
+				userToAdd = new Estudiante(ci,password,nombre,apellido,email,fechaNac,orientación,estado,generación);
+			}
+			
+			usuarios.add(userToAdd);
+		}
+		
+		return usuarios;
+	}
+	
+	public static ArrayList<Estudiante> listarEstudiantes() throws Exception {
+		Connection controlador = getMySqlConnection();
+		Statement st;
+		ResultSet res;
+		st = controlador.createStatement();
+		res = st.executeQuery("SELECT * FROM estudiante");
+		Estudiante estudianteToAdd = null;
+		ArrayList<Estudiante> estudiantes = new ArrayList<>();
+		while(res.next()) {
+			int ci = res.getInt("ci");
+			String generación = res.getString("generación");
+			String orientación = res.getString("orientación");
+			String estado = res.getString("estado");
+			
+			
+			
+			
+			estudianteToAdd = new Estudiante(ci,contraseña,nombre,apellido,mail,fecha,orientación,estado,generación);
+			
 				
 			usuarios.add(userToAdd);
 		}
@@ -55,14 +89,6 @@ public class controladorBD {
 		return usuarios;
 	}
 	
-	public static ResultSet listarEstudiantes() throws Exception {
-		Connection controlador = getMySqlConnection();
-		Statement st;
-		ResultSet res;
-		st = controlador.createStatement();
-		res = st.executeQuery("SELECT * FROM estudiante");
-		return res;
-	}
 	public static ResultSet listarMaterias() throws Exception {
 		Connection controlador = getMySqlConnection();
 		Statement st;

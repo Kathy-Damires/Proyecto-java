@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.HashSet;
 
 public class Estudiante extends Usuario {
-	private Orientacion orientacion;
-	private Estado estado;
-	private Generacion generacion;
+	private String orientacion;
+	private String estado;
+	private String generacion;
 
 	// relaciones
 	private HashSet<Cursada> materiasSalvadas = new HashSet<Cursada>();
@@ -15,35 +15,35 @@ public class Estudiante extends Usuario {
 	private HashSet<Examen> examenes = new HashSet<Examen>();
 	private HashSet<Inasistencia> inasistencias = new HashSet<Inasistencia>();
 
-	public Estudiante(String ci, String contraseña, String nombre, String apellido, String mail, LocalDate fecha,
-			Orientacion orientacion, Estado estado, Generacion generacion) {
+	public Estudiante(int ci, String contraseña, String nombre, String apellido, String mail,String fecha,
+			String orientacion, String estado, String generacion) {
 		super(ci, contraseña, nombre, apellido, mail, fecha);
 		this.orientacion = orientacion;
 		this.estado = estado;
 		this.generacion = generacion;
 	}
 
-	public Orientacion getOrientacion() {
+	public String getOrientacion() {
 		return orientacion;
 	}
 
-	public void setOrientacion(Orientacion orientacion) {
+	public void setOrientacion(String orientacion) {
 		this.orientacion = orientacion;
 	}
 
-	public Estado getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-	public Generacion getGeneracion() {
+	public String getGeneracion() {
 		return generacion;
 	}
 
-	public void setGeneracion(Generacion generacion) {
+	public void setGeneracion(String generacion) {
 		this.generacion = generacion;
 	}
 

@@ -63,7 +63,7 @@ ControladorLogic c = new ControladorLogic();
 		}
 		*/
 		
-	System.out.println(c.listarUsuarios());
+	
 
 	}
 

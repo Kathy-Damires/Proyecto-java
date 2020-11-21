@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Usuario {
 
-	private String ci;
+	private int ci;
 	private String contraseña;
 	private String nombre;
 	private String apellido;
 	private String mail;
-	private LocalDate fecha;
+	private String fecha;
 
-	public Usuario(String ci, String contraseña, String nombre, String apellido, String mail, LocalDate fecha) {// constructor
+	public Usuario(int ci, String contraseña, String nombre, String apellido, String mail, String fecha) {// constructor
 		this.ci = ci;
 		this.contraseña = contraseña;
 		this.nombre = nombre;
@@ -20,11 +20,11 @@ public class Usuario {
 		this.fecha = fecha;
 	}
 
-	public void setCi(String ci) {
+	public void setCi(int ci) {
 		this.ci = ci;
 	}
 
-	public String getCi() {
+	public int getCi() {
 		return ci;
 	}
 
@@ -60,11 +60,11 @@ public class Usuario {
 		return mail;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
-	public LocalDate getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
