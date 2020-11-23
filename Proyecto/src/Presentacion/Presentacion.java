@@ -39,14 +39,20 @@ import java.awt.event.ComponentEvent;
 import javax.swing.JScrollPane;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import java.sql.ResultSet;
+import java.time.LocalDate;
+
 import Logica.TipoInasistencia;
+import Logica.Usuario;
+import Persistencia.controladorBD;
 import Logica.Orientacion;
 import Logica.Generacion;
 import Logica.ControladorLogic;
+import Logica.Estudiante;
 import Logica.Main;
 import com.toedter.calendar.JDateChooser;
 import java.awt.FlowLayout;
@@ -150,13 +156,13 @@ public class Presentacion extends JFrame {
 		panelAltaEstudiante.add(inputMailAltaEstudiante);
 		inputMailAltaEstudiante.setColumns(10);
 
-		JLabel lblContraseñaAltaEstudiante = new JLabel("Contrase\u00F1a*");
-		lblContraseñaAltaEstudiante.setBounds(259, 69, 78, 14);
-		panelAltaEstudiante.add(lblContraseñaAltaEstudiante);
+		JLabel lblContraseÃ±aAltaEstudiante = new JLabel("Contrase\u00F1a*");
+		lblContraseÃ±aAltaEstudiante.setBounds(259, 69, 78, 14);
+		panelAltaEstudiante.add(lblContraseÃ±aAltaEstudiante);
 
-		inputContraseñaAltaEstudiante = new JPasswordField();
-		inputContraseñaAltaEstudiante.setBounds(347, 66, 86, 20);
-		panelAltaEstudiante.add(inputContraseñaAltaEstudiante);
+		inputContraseÃ±aAltaEstudiante = new JPasswordField();
+		inputContraseÃ±aAltaEstudiante.setBounds(347, 66, 86, 20);
+		panelAltaEstudiante.add(inputContraseÃ±aAltaEstudiante);
 
 		JLabel lblGeneracionAltaEstudiante = new JLabel("Generacion*");
 		lblGeneracionAltaEstudiante.setBounds(259, 108, 70, 14);
@@ -173,24 +179,23 @@ public class Presentacion extends JFrame {
 					JOptionPane.showMessageDialog(null,"No ha ingresado cedula");
 				}if(inputNombreAltaEstudiante.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "No ha ingresado nombre");
-				}if(inputApellidoAltaEstudiante.getText().isEmpty()) {
+				}if(inputApelidoAltaEstudiante.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null,"No ha ingresado Apellido");
 				}if(dateChooserAltaEstudiante.getDate().equals("")) {
 					JOptionPane.showMessageDialog(null,"No ha ingresado fecha de nacimiento");
 				}if(inputMailAltaEstudiante.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null,"No ha ingresado mail");
-				}if(inputContraseñaAltaEstudiante.getPassword().equals("")) {
-					JOptionPane.showMessageDialog(null,"No ha ingresado contraseña");
+				}if(inputContraseÃ±aAltaEstudiante.getPassword().equals("")) {
+					JOptionPane.showMessageDialog(null,"No ha ingresado contraseÃ±a");
 				}else {
+				/*	ControladorLogic.altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado) throws Exception {
 					ci.setText(inputCiAltaEstudiante.getText());
 					nombre.setText(inputNombreAltaEstudiante.getText());
 					apellido.setText(inputApelidoAltaEstudiante.getText());
 					fechaNac.setDate(dateChooserAltaEstudiante.getDate());
 					email.setText(inputMailAltaEstudiante.getText());
-					passwd.setText(inputContraseñaAltaEstudiante.getPassword());
-					
-					altaEstudiante(int ci, String nombre, String apellido, LocalDate fechaNac, String email, String passwd, String generacion, String orientacion, String estado);
-								
+					passwd.setText(inputContraseÃ±aAltaEstudiante.getPassword());						
+					}*/
 				}
 			}
 		});
@@ -606,12 +611,12 @@ public class Presentacion extends JFrame {
 		listadoDeEstudiantesConPendientes = new JTable();
 		scrollPane_4.setViewportView(listadoDeEstudiantesConPendientes);
 
-		JPanel panelReporteDeEstadísticas = new JPanel();
-		paneles.add(panelReporteDeEstadísticas, "panelHistoricoDeExamenes");
+		JPanel panelReporteDeEstadÃ­sticas = new JPanel();
+		paneles.add(panelReporteDeEstadÃ­sticas, "panelHistoricoDeExamenes");
 
 		JLabel lblNewLabel_13 = new JLabel("Reporte de estad\u00EDsticas");
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelReporteDeEstadísticas.add(lblNewLabel_13);
+		panelReporteDeEstadÃ­sticas.add(lblNewLabel_13);
 
 		JPanel panelModificarUsuario = new JPanel();
 		paneles.add(panelModificarUsuario, "panelModificarUsuario");
@@ -787,7 +792,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -811,7 +816,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -835,7 +840,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -859,7 +864,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -883,7 +888,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -908,7 +913,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -933,7 +938,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -958,7 +963,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -983,7 +988,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1009,7 +1014,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1035,7 +1040,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1061,7 +1066,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1087,7 +1092,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(true);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1113,7 +1118,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(true);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1139,7 +1144,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(true);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1165,7 +1170,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(true);
+				panelReporteDeEstadÃ­sticas.setVisible(true);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1190,7 +1195,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(true);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(false);
@@ -1215,7 +1220,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(true);
 				panelBajaInasistencia.setVisible(false);
@@ -1241,7 +1246,7 @@ public class Presentacion extends JFrame {
 				panelListarDocentes.setVisible(false);
 				panelListarFuncionarios.setVisible(false);
 				panelListarEstudiantesConPendientes.setVisible(false);
-				panelReporteDeEstadísticas.setVisible(false);
+				panelReporteDeEstadÃ­sticas.setVisible(false);
 				panelModificarUsuario.setVisible(false);
 				panelModificarMateria.setVisible(false);
 				panelBajaInasistencia.setVisible(true);
@@ -1268,18 +1273,18 @@ public class Presentacion extends JFrame {
 				model.addColumn("Apellido");
 				model.addColumn("Fecha de Nacimiento");
 				model.addColumn("Mail");
-				model.addColumn("Contraseña");
+				model.addColumn("ContraseÃ±a");
 				String[] dato = new String[6];
 				try {
-					ResultSet result = ControladorLogic.listarUsuarios();
+					ArrayList<Usuario> result = ControladorLogic.listarUsuarios();
 
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
-						dato[4] = result.getString(5);
-						dato[5] = result.getString(6);
+					while (((ResultSet) result).next()) {
+						dato[0] = ((ResultSet) result).getString(1);
+						dato[1] = ((ResultSet) result).getString(2);
+						dato[2] = ((ResultSet) result).getString(3);
+						dato[3] = ((ResultSet) result).getString(4);
+						dato[4] = ((ResultSet) result).getString(5);
+						dato[5] = ((ResultSet) result).getString(6);
 						model.addRow(dato);
 					}
 					listadoDeUsuarios.setModel(model);
@@ -1300,17 +1305,17 @@ public class Presentacion extends JFrame {
 					}
 				};
 				model.addColumn("Cedula");
-				model.addColumn("Generación");
-				model.addColumn("Orientación");
+				model.addColumn("GeneraciÃ³n");
+				model.addColumn("OrientaciÃ³n");
 				model.addColumn("Estado");
 				String[] dato = new String[4];
 				try {
-					ResultSet result = ControladorLogic.listarEstudiantes();
-					while (result.next()) {
-						dato[0] = result.getString(1);
-						dato[1] = result.getString(2);
-						dato[2] = result.getString(3);
-						dato[3] = result.getString(4);
+					ArrayList<Estudiante> result = ControladorLogic.listarEstudiantes();
+					while (((ResultSet) result).next()) {
+						dato[0] = ((ResultSet) result).getString(1);
+						dato[1] = ((ResultSet) result).getString(2);
+						dato[2] = ((ResultSet) result).getString(3);
+						dato[3] = ((ResultSet) result).getString(4);
 						model.addRow(dato);
 					}
 					listadoDeEstudiantes.setModel(model);
@@ -1330,10 +1335,10 @@ public class Presentacion extends JFrame {
 						return false;
 					}
 				};
-				model.addColumn("Código");
+				model.addColumn("CÃ³digo");
 				model.addColumn("Nombre");
-				model.addColumn("Orientación");
-				model.addColumn("Generación");
+				model.addColumn("OrientaciÃ³n");
+				model.addColumn("GeneraciÃ³n");
 
 				String[] dato = new String[4];
 
@@ -1371,9 +1376,9 @@ public class Presentacion extends JFrame {
 				model2.addColumn("Apellido");
 				model2.addColumn("Fecha de Nacimiento");
 				model2.addColumn("Mail");
-				model2.addColumn("Orientación");
+				model2.addColumn("OrientaciÃ³n");
 				model2.addColumn("Estado");
-				model2.addColumn("Generación");
+				model2.addColumn("GeneraciÃ³n");
 
 				String[] dato2 = new String[8];
 
@@ -1488,14 +1493,14 @@ public class Presentacion extends JFrame {
 				String[] dato5 = new String[5];
 
 				try {
-					ResultSet result = ControladorLogic.listarEstudiantesConPendientes();
+					ArrayList<Estudiante> result = ControladorLogic.listarEstudiantesConPendientes();
 
-					while (result.next()) {
-						dato5[0] = result.getString(1);
-						dato5[1] = result.getString(2);
-						dato5[2] = result.getString(3);
-						dato5[3] = result.getString(4);
-						dato5[4] = result.getString(5);
+					while (((ResultSet) result).next()) {
+						dato5[0] = ((ResultSet) result).getString(1);
+						dato5[1] = ((ResultSet) result).getString(2);
+						dato5[2] = ((ResultSet) result).getString(3);
+						dato5[3] = ((ResultSet) result).getString(4);
+						dato5[4] = ((ResultSet) result).getString(5);
 						model5.addRow(dato5);
 					}
 					listadoDeEstudiantesConPendientes.setModel(model5);
@@ -1509,7 +1514,7 @@ public class Presentacion extends JFrame {
 	}
 
 	private JPanel contentPane;
-	private JTextField inputContraseñaUsuario;
+	private JTextField inputContraseÃ±aUsuario;
 	private JTextField inputApellidoUsuario;
 	private JTextField inputCiUsuario;
 	private JTextField inputMailUsuario;
@@ -1517,7 +1522,7 @@ public class Presentacion extends JFrame {
 	private JTextField inputDia;
 	private JTextField inputMes;
 	private JTextField inputCiLogin;
-	private JTextField inputContraseñaLogin;
+	private JTextField inputContraseÃ±aLogin;
 	private JTextField inputCodigoMateria;
 	private JTextField inputNombreMateria;
 	private JTextField InputOrientacionMateria;
@@ -1542,7 +1547,7 @@ public class Presentacion extends JFrame {
 	private JTextField inputNombreAltaEstudiante;
 	private JTextField inputApelidoAltaEstudiante;
 	private JTextField inputMailAltaEstudiante;
-	private JPasswordField inputContraseñaAltaEstudiante;
+	private JPasswordField inputContraseÃ±aAltaEstudiante;
 	private JTextField inputCiAltaDocente;
 	private JTextField inputNombreAltaDocente;
 	private JTextField inputApellidoAltaDocente;
